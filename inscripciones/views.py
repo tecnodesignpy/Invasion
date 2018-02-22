@@ -39,14 +39,18 @@ class PDF(View):
         archivo_imagen = 'http://invasion.com.py/static/dist/img/logo.png'
         print(archivo_imagen)
         #Definimos el tamanho de la imagen a cargar y las coordenadas correspondientes
-        pdf.drawImage(archivo_imagen, 220, 220, 120,preserveAspectRatio=True)      
+        pdf.drawImage(archivo_imagen, 160, -400, 80,preserveAspectRatio=True)      
 		#Establecemos el tamanho de letra en 16 y el tipo de letra Helvetica
-        pdf.setFont("Helvetica", 13)
+        pdf.setFont("Montserrat", 13)
 		#Dibujamos una cadena en la ubicacion X,Y especificada
-        pdf.drawString(195, 810, u"CAMPAMENTO INVASION 2018")
-        pdf.setFont("Helvetica", 20)
-        pdf.drawString(160, 690, u"Código de Pre-Inscripción: "+str(datos.id))
-        pdf.drawString(40, 660, u"Nombre y Apellido")
+        pdf.drawString(110, 170, u"CAMPAMENTO INVASION 2018")
+        pdf.setFont("Helvetica-Bold", 20)
+        pdf.drawString(55, 85, u"Código de Pre-Inscripción: "+str(datos.id))
+        pdf.setFont("Helvetica", 13)
+        pdf.drawString(40, 65, u"Nombre y Apellido:")
+        pdf.drawString(40, 45, u"CI:")
+        pdf.setFillColorRGB(255,0,0) #choose your font colour
+        pdf.drawString(40, 25, u"No olvides abonar el monto para validar tu inscripción!")
         #Definimos el tamanho de la imagen a cargar y las coordenadas correspondientes
         #pdf.drawImage(perfil_foto, 460, 750, 80,80) 
 
@@ -63,6 +67,7 @@ class PDF(View):
         #Canvas nos permite hacer el reporte con coordenadas X y Y
         pdf = canvas.Canvas(buffer)
         #Llamo al metodo cabecera donde están definidos los datos que aparecen en la cabecera del reporte.
+        pdf.setPageSize((400, 200))
         self.cabecera(pdf,datos)
         #self.secciones(pdf,datos)
         #Con show page hacemos un corte de página para pasar a la siguiente
