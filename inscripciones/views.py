@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
+from django.views.decorators.csrf import csrf_exempt
 
 #PDF
-
 #Importamos settings para poder tener a la mano la ruta de la carpeta media // Para el PDF
 from django.conf import settings
 from io import BytesIO
@@ -20,13 +20,14 @@ from django.conf import settings
 
 # Create your views here.
 
+@csrf_exempt
 def inscripciones(request):
     if request.method == "POST":
     	form = InscripcionForm(request.POST)
     	if form.is_valid():
     		dato = form.save()
     		datos = formulario.objects.get(id=dato.pk)
-    		return redirect('inscripcion:equipmentoperator',id=datos.id)
+    		return redirect('inscripcion:pdf',id=datos.id)
     else:
         form = InscripcionForm()
     return render(request, 'formulario.html',{'form':form})
@@ -36,15 +37,16 @@ class PDF(View):
     def cabecera(self,pdf,datos):
         print("##############  HOJA 1  ###################")
         archivo_imagen = 'http://invasion.com.py/static/dist/img/logo.png'
+        print(archivo_imagen)
         #Definimos el tamanho de la imagen a cargar y las coordenadas correspondientes
-        pdf.drawImage(archivo_imagen, 40, 750, 120,preserveAspectRatio=True)      
+        pdf.drawImage(archivo_imagen, 220, 220, 120,preserveAspectRatio=True)      
 		#Establecemos el tamanho de letra en 16 y el tipo de letra Helvetica
         pdf.setFont("Helvetica", 13)
 		#Dibujamos una cadena en la ubicacion X,Y especificada
-        pdf.drawString(170, 800, u"Muchas gracias por completar el formulario")
-        pdf.drawString(195, 760, u"CAMPAMENTO INVASION 2018")
+        pdf.drawString(195, 810, u"CAMPAMENTO INVASION 2018")
         pdf.setFont("Helvetica", 20)
-        pdf.drawString(160, 720, u"Código de Pre-Inscripción: "+str(datos.id))
+        pdf.drawString(160, 690, u"Código de Pre-Inscripción: "+str(datos.id))
+        pdf.drawString(40, 660, u"Nombre y Apellido")
         #Definimos el tamanho de la imagen a cargar y las coordenadas correspondientes
         #pdf.drawImage(perfil_foto, 460, 750, 80,80) 
 
