@@ -35,7 +35,7 @@ def inscripciones(request):
 class PDF(View):
     def cabecera(self,pdf,datos):
         print("##############  HOJA 1  ###################")
-        archivo_imagen = 'http://127.0.0.1:8000/static/dist/img/logo.png'
+        archivo_imagen = 'http://invasion.com.py/static/dist/img/logo.png'
         #Definimos el tamanho de la imagen a cargar y las coordenadas correspondientes
         pdf.drawImage(archivo_imagen, 40, 750, 120,preserveAspectRatio=True)      
 		#Establecemos el tamanho de letra en 16 y el tipo de letra Helvetica
