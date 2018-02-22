@@ -4,7 +4,7 @@ from django.db import models
 
 GENEROS=(("M","Masculino"),("F","Femenino"))
 SI_NO=(("Si","Si"),("No","No"))
-PARENTESCO=(("Esposos","Esposos"),("Novios","Novios"),("Hermanos","Hermanos"),("Primos","Primos"),("Padre/Madre","Padre/Madre"),("Hijo/Hija","Hijo/Hija"),("Otro","Otro"))
+PARENTESCO=(("Esposos","Esposos"),("Novios","Novios"),("Hermanos","Hermanos"),("Primos","Primos"),("Papa/Mama","Papá/Mamá"),("Hijo/Hija","Hijo/Hija"),("Otro","Otro"))
 REMERAS=(("P","P"),("M","M"),("G","G"),("XG","XG"))
 
 def pkgen():
