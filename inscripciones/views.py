@@ -15,6 +15,14 @@ from reportlab.platypus import Spacer, SimpleDocTemplate, Table, TableStyle
 from reportlab.platypus import Paragraph, Image
 from reportlab.lib import colors
 from django.http import HttpResponse
+
+import locale 
+# Definimos el formato que deseamos
+#locale.setlocale(locale.LC_ALL, 'es_ES')
+#locale.setlocale(locale.LC_ALL, 'en_US')
+locale.setlocale(locale.LC_ALL, '')
+
+
 # la ruta de los staticfiles
 from django.conf import settings
 
@@ -41,16 +49,16 @@ class PDF(View):
         #Definimos el tamanho de la imagen a cargar y las coordenadas correspondientes
         pdf.drawImage(archivo_imagen, 160, -400, 80,preserveAspectRatio=True)      
 		#Establecemos el tamanho de letra en 16 y el tipo de letra Helvetica
-        pdf.setFont("Montserrat", 13)
+        pdf.setFont("Helvetica", 13)
 		#Dibujamos una cadena en la ubicacion X,Y especificada
         pdf.drawString(110, 170, u"CAMPAMENTO INVASION 2018")
         pdf.setFont("Helvetica-Bold", 20)
-        pdf.drawString(55, 85, u"Código de Pre-Inscripción: "+str(datos.id))
+        pdf.drawString(55, 80, u"Código de Pre-Inscripción: "+str(datos.id))
         pdf.setFont("Helvetica", 13)
-        pdf.drawString(40, 65, u"Nombre y Apellido:")
-        pdf.drawString(40, 45, u"CI:")
+        pdf.drawString(40, 60, u"Nombre y Apellido: "+ str(datos.nombres) +" "+ str(datos.apellidos))
+        pdf.drawString(40, 40, u"CI: "+ format(int(datos.cedula),','))
         pdf.setFillColorRGB(255,0,0) #choose your font colour
-        pdf.drawString(40, 25, u"No olvides abonar el monto para validar tu inscripción!")
+        pdf.drawString(40, 20, u"No olvides abonar el monto para validar tu inscripción!")
         #Definimos el tamanho de la imagen a cargar y las coordenadas correspondientes
         #pdf.drawImage(perfil_foto, 460, 750, 80,80) 
 
