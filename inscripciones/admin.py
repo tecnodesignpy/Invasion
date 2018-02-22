@@ -4,6 +4,7 @@ from . import models
 # Para los boton de ACCIONES
 from django.utils.html import format_html
 from django.core.urlresolvers import reverse
+from datetime import datetime
 
 class EdadFilter(admin.SimpleListFilter):
     # Human-readable title which will be displayed in the
@@ -51,20 +52,24 @@ class EdadFilter(admin.SimpleListFilter):
 
 	
 class FormularioAdmin(admin.ModelAdmin):
-    list_display = (u'id','fecha_completado','nombres','apellidos','edad','nacimiento','pagado','fecha_pagado','account_actions',)
+    list_display = (u'id','fecha_completado','nombres','apellidos','edad','nacimiento','lider_celula','pagado','account_actions',)
     #list_filter = (EdadFilter,NacionalidadFilter,'genero','nivel_ingles','experiencia_years','fumador','licencia_usa','recontratado','trabajo',)
     #search_fields = ['pais','nombres','edad','id','apellidos','experiencia','company_name','Experiencia_Laboral','comment','hear_about','recrutier','conocimiento_mecanica','consulado_cercano','ciudad','calle_nombre','email','status','genero','facebook_name','skype_name',]
     ordering = ('-fecha_completado',)
     save_on_top = True
 
+
+    def marcar_pagado(modeladmin, request, queryset):
+        print("Pagamos")
+        #queryset.update(fecha_pagado=datetime.now())
+        #self.message_user(request, " pagado exitosamente.")
+
     def account_actions(self, obj):
         print(obj.fecha_pagado)
         if(obj.fecha_pagado == None):
             return format_html(
-                '<a class="button" style="background-color:green" onclick="marcar_pagado()">Pagar</a>&nbsp;'
-                '<a class="button" href="{}">PDF</a>&nbsp;',
-                reverse('inscripcion:pdf', args=[obj.pk]),
-                reverse('inscripcion:pdf', args=[obj.pk]),
+                '<a class="button" style="background-color:green" href="{}">Pagar</a>&nbsp;',
+                self.marcar_pagado,
             )
         else:
             return format_html(
@@ -73,14 +78,6 @@ class FormularioAdmin(admin.ModelAdmin):
             )
     account_actions.short_description = 'Botones'
     account_actions.allow_tags = True
-
-    def marcar_pagado(self, request, queryset):
-        rows_updated = queryset.update(status='p')
-        if rows_updated == 1:
-            message_bit = "1 story was"
-        else:
-            message_bit = "%s stories were" % rows_updated
-        self.message_user(request, "%s successfully marked as published." % message_bit)
 
 
 def _register(model, admin_class):
