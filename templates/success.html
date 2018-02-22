@@ -18,9 +18,8 @@ function onload(codigo){
         text: "<h1 style='text-transform:none'>Código de Pre-Inscripción: "+codigo+"</h1><br>No olvides abonar el monto para validar tu inscripción! <br><br> ESTAMOS GENERANDO EL PDF.",
         html: true,
         type: "success",
-        confirmButtonColor: "#002B4B",
-        confirmButtonText: "Ok",
-        closeOnConfirm: false
+        showCancelButton: false, // There won't be any cancel button
+        showConfirmButton: false // There won't be any confirm button
         });
     window.setTimeout(function(){
 
