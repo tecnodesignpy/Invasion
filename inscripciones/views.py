@@ -16,11 +16,11 @@ from reportlab.platypus import Paragraph, Image
 from reportlab.lib import colors
 from django.http import HttpResponse
 
-import locale 
+#import locale 
 # Definimos el formato que deseamos
 #locale.setlocale(locale.LC_ALL, 'es_ES')
 #locale.setlocale(locale.LC_ALL, 'en_US')
-locale.setlocale(locale.LC_ALL, '')
+#locale.setlocale(locale.LC_ALL, '')
 
 
 # la ruta de los staticfiles
