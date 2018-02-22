@@ -15,8 +15,9 @@ class InscripcionForm (forms.ModelForm):
 			'celula': forms.Select(attrs={'onChange':'esta_en_celula()'}),
 			'nacimiento':forms.TextInput(attrs={'type':'date','class':'form-control','placeholder':'dd/mm/aaaa'}),
             'parentesco': forms.Select(attrs={'class':'form-control','style':'display: none; width:100% !important'}),
-            'nombre_compania': forms.TextInput(attrs={'class':'form-control','style':'display: none;'}),
+            'nombre_compania': forms.TextInput(attrs={'class':'form-control','style':'display: none;','placeholder':'Nombre completo'}),
             'observaciones': forms.Textarea(attrs={'class':'form-control','style':'width: 100%;'}),
             'edad': forms.TextInput(attrs={'class':'form-control','placeholder':' A partir de 13 y hasta 35 años'}),
+            'lider_celula': forms.TextInput(attrs={'class':'form-control','style':'width: 100%;','placeholder':' Nombre completo del Lider'}),
 		}
 		
