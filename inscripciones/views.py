@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import *
 from .forms import *
 from django.views.decorators.csrf import csrf_exempt
+from datetime import datetime
 
 #PDF
 #Importamos settings para poder tener a la mano la ruta de la carpeta media // Para el PDF
@@ -43,7 +44,15 @@ def inscripciones(request):
 def success(request,id):
     codigo=id
     return render(request, 'success.html',{'codigo':codigo})
-    return redirect('inscripcion:pdf',id=codigo)
+
+def pagar(request,id):
+    codigo=id
+    print(codigo)
+    datos = formulario.objects.get(id=codigo)
+    datos.fecha_pagado = datetime.now()
+    datos.pagado = True
+    datos.save()
+    return redirect('/admin/inscripciones/formulario/')
 
 class PDF(View):
     def cabecera(self,pdf,datos):
