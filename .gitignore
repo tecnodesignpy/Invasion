@@ -1,0 +1,6 @@
+*.pyc
+__ pycache __
+Inva
+db.sqlite3
+Inscripciones/migrations
+.DS_Store

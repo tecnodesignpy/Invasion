@@ -1,0 +1,764 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}Campa Invasión 2018{% endblock %}
+  {% block extraheaders %}
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Lato:900,300);
+      @import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+
+
+      .top5{
+        margin-top: 5px;
+      }
+
+      #boxInfo {
+          position: fixed;
+          top: 200px;
+          right: 10px;
+          padding: 3px;
+          width: 260px;
+          z-index: 9999;
+      }
+      #boxInfo p {
+          display: block;
+          border: 2px solid #393939;
+          margin: 4px;
+          background-color: #000000;
+      }
+      #boxInfo p span {
+          display: block;
+          padding: 5px 10px;
+          font-size: 13px;
+          color: #fff;
+          text-align: center;
+      }
+       #boxInfo p span.btn-close {
+          float: right;
+          font-size: 20px;
+          color: #fff;
+       }
+      @media only screen and (min-width : 320px) {
+      /*
+          #boxInfo {
+              display: none;
+          }
+          */
+      }
+
+      @media only screen and (min-width : 768px) {
+          #boxInfo {
+              display: block;
+              top: 230px;
+          }
+      }
+
+      @media only screen and (min-width : 992px) {
+          #boxInfo {
+              top: 180px;
+          }
+      }
+
+      @media only screen and (min-width : 1200px) {
+          #boxInfo {
+              top: 220px;
+              right: 10px;
+          }
+      }
+
+      $lato:             'Lato', sans-serif;
+
+      $bp-small:         400px;
+
+      $bg-body:          #24A0AD;
+      $bg-date-active:   darken($bg-body, 10%);
+      $bg-date-border:   #ededed;
+      $bg-date-hover:    #eeeeee;
+      $bg-date-selected: $bg-body;
+      $bg-date-text:     white;
+      $bg-input:         #ffffff;
+
+      $color-date-lite:  #ccc;
+      $color-input:      darken($bg-body, 25%);
+      $color-text:       #ffffff;
+
+      $margin-element:   12px;
+      $margin-form:      36px;
+
+      @mixin pos($position: absolute) {
+        position: $position;
+        top: 0; right: 0; bottom: 0; left: 0;
+        margin: auto;
+      }
+
+      @mixin placeholder {
+        &::-webkit-input-placeholder {@content}
+        &:-moz-placeholder           {@content}
+        &::-moz-placeholder          {@content}
+        &:-ms-input-placeholder      {@content}  
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: $lato;
+        line-height: 1.2;
+        background-color: $bg-body;
+      }
+
+      h1 {
+        font-size: 40px;
+        font-weight: 900;
+        color: $color-text;
+        margin-bottom: $margin-element;
+      }
+
+      h2 {
+        font-size: 22px;
+        color: $color-text;
+        margin-bottom: $margin-element;
+      }
+
+      main {
+        @include pos;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        max-width: 600px;
+      }
+
+      #flight-datepicker {
+        @media screen and (min-width: $bp-small) {
+          display: flex;
+        }
+        margin-top: $margin-form;
+        .form-item {
+          position: relative;
+          margin: 12px 0 60px;
+          @media screen and (min-width: $bp-small) {
+            margin: 12px 24px 0 0;
+          }
+        }
+        label {
+          display: block;
+          margin-bottom: 8px;
+          color: $bg-date-text;
+        }
+        input {
+          display: block;
+          margin-bottom: 8px;
+          padding-bottom: 6px;
+          width: 100%;
+          font-family: $lato;
+          font-size: 22px;
+          font-weight: bold;
+          text-align: left;
+          color: $color-input;
+          background-color: transparent;
+          border: none;
+          border-bottom: 2px solid $bg-input;
+          border-radius: 0;
+          outline: none;
+          transition: border-color .2s ease-out;
+          &:first-child,
+          &:last-child {
+            border-radius: 0;
+          }
+          @include placeholder {
+            color: $color-input;
+            font-size: 14px;
+            line-height: 30px;
+            transition: color .2s .2s ease-out;
+          }
+          &:focus {
+            border-bottom-color: darken($bg-body, 20%);
+            @include placeholder {
+              color: transparent;
+              transition: color .2s ease-out;
+            }
+          }
+        }
+        .date-text {
+          @include pos;
+          top: calc(100% + 6px);
+          font-size: 12px;
+          color: $bg-date-text;
+          @media screen and (min-width: $bp-small) {
+            top: 100%;
+          }
+        }
+      }
+
+      .datepicker.dropdown-menu {
+        padding: 0;
+        background-clip: border-box;
+        border: none;
+        border-radius: 0;
+        animation: popup .2s ease-out forwards;
+        table {
+          background-color: darken($bg-body, 10%);
+          thead {
+            background-color: darken($bg-body, 10%);
+            tr {
+              border-top: 0;
+            }
+          }
+          tbody {
+            background-color: white;
+          }
+          tr {
+            border-top: 1px solid $bg-date-border;
+            td, th {
+              width: auto;
+              height: 24px;
+              padding: 8px;
+              font-size: 16px;
+              border-radius: 0;
+              transition: background-color .6s ease-out;
+              @media screen and (min-width: $bp-small) {
+                padding: 12px;
+              }
+              &:hover,
+              &.active:hover,
+              &:active:hover {
+                border-color: $bg-date-border;
+                border-radius: 0;
+                transition: background-color .2s ease-out;
+              }
+              &.focused,
+              &.selected {
+                background-color: $bg-date-selected;
+                border-color: $bg-date-border;
+                border-radius: 0;
+              }
+              &.active,
+              &.active:focus,
+              &.active.active:hover,
+              &:active:focus,
+              &.highlighted {
+                background-color: $bg-date-active;
+                border-color: $bg-date-border;
+              }
+            }
+            th.datepicker-switch {
+              font-size: 12px;
+              font-weight: bold;
+              line-height: 2;
+              text-transform: uppercase;
+              letter-spacing: .05em;
+              color: $color-text;
+              background-color: inherit;
+              border-radius: 0;
+            }
+            th.prev,
+            th.next {
+              color: $color-text;
+              background-color: darken($bg-body, 15%);
+              border-radius: 0;
+            }
+            th.dow {
+              padding: 2px 12px;
+              font-size: 12px;
+              line-height: 2;
+              color: $color-text;
+              background-color: darken($bg-body, 12%);
+              border-top: 1px solid darken($bg-body, 13%);
+              border-radius: 0;
+            }
+            td.day {
+              width: 24px;
+              border-right: 1px solid #ededed;
+              &:last-child {
+                border-right-width: 0;
+              }
+            }
+            td.range {
+              background-color: $bg-date-hover;
+            }
+          }
+        }
+        .new,
+        .old,
+        .disabled,
+        .disabled:hover {
+          color: $color-date-lite;
+        }
+      }
+
+      [class*="fontawesome-"] {
+        &:before {
+          font-family: 'FontAwesome', sans-serif;
+        }
+      }
+
+      .fontawesome-calendar {
+        position: absolute;
+        top: 26px;
+        right: 0;
+        font-size: 24px;
+        z-index: -99;
+      }
+
+      @keyframes popup {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      #loading {
+          background: #f4f4f2 repeat scroll 0 0;
+          height: 100%;
+          left: 0;
+          margin: auto;
+          position: fixed;
+          top: 0;
+          width: 100%;
+      }
+      .bokeh {
+          border: 0.01em solid rgba(150, 150, 150, 0.1);
+          border-radius: 50%;
+          font-size: 100px;
+          height: 1em;
+          list-style: outside none none;
+          margin: 0 auto;
+          position: relative;
+          top: 35%;
+          width: 1em;
+          z-index: 2147483647;
+      }
+      .bokeh li {
+          border-radius: 50%;
+          height: 0.2em;
+          position: absolute;
+          width: 0.2em;
+      }
+      .bokeh li:nth-child(1) {
+          animation: 1.13s linear 0s normal none infinite running rota, 3.67s ease-in-out 0s alternate none infinite running opa;
+          background: #002B4B none repeat scroll 0 0;
+          left: 50%;
+          margin: 0 0 0 -0.1em;
+          top: 0;
+          transform-origin: 50% 250% 0;
+      }
+      .bokeh li:nth-child(2) {
+          animation: 1.86s linear 0s normal none infinite running rota, 4.29s ease-in-out 0s alternate none infinite running opa;
+          background: #002B4B none repeat scroll 0 0;
+          margin: -0.1em 0 0;
+          right: 0;
+          top: 50%;
+          transform-origin: -150% 50% 0;
+      }
+      .bokeh li:nth-child(3) {
+          animation: 1.45s linear 0s normal none infinite running rota, 5.12s ease-in-out 0s alternate none infinite running opa;
+          background: #2f2f2f  none repeat scroll 0 0;
+          bottom: 0;
+          left: 50%;
+          margin: 0 0 0 -0.1em;
+          transform-origin: 50% -150% 0;
+      }
+      .bokeh li:nth-child(4) {
+          animation: 1.72s linear 0s normal none infinite running rota, 5.25s ease-in-out 0s alternate none infinite running opa;
+          background: #0041ff  none repeat scroll 0 0;
+          margin: -0.1em 0 0;
+          top: 50%;
+          transform-origin: 250% 50% 0;
+      }
+      @keyframes opa {
+      12% {
+          opacity: 0.8;
+      }
+      19.5% {
+          opacity: 0.88;
+      }
+      37.2% {
+          opacity: 0.64;
+      }
+      40.5% {
+          opacity: 0.52;
+      }
+      52.7% {
+          opacity: 0.69;
+      }
+      60.2% {
+          opacity: 0.6;
+      }
+      66.6% {
+          opacity: 0.52;
+      }
+      70% {
+          opacity: 0.63;
+      }
+      79.9% {
+          opacity: 0.6;
+      }
+      84.2% {
+          opacity: 0.75;
+      }
+      91% {
+          opacity: 0.87;
+      }
+      }
+
+      @keyframes rota {
+      100% {
+          transform: rotate(360deg);
+      }
+      }
+
+      }
+    </style>
+  {% endblock %}
+
+
+ {% block body %}<body class="page-subpage page-submit navigation-off-canvas" id="page-top">{% endblock %}
+{% block content %}
+
+<div id="page-canvas">
+
+    <div id="page-canvas">
+
+            <!--Page Content-->
+            <div id="page-content">
+
+              <div id="loading" class="cargando" style="display: none">
+                  <ul class="bokeh">
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                  </ul>
+              </div>
+
+                <section class="container">
+                <form id="eo" style="margin:5%" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.id }}
+
+    <div id="cabecera" class="row">
+            <div class="col-md-12 col-xs-12 text-center">
+            <br>
+                <a style="color:#000000; font-size:20px; text-transform:uppercase"><strong>FORMULARIO DE PRE-INSCRIPCIÓN</strong></a>
+            </div>
+        
+    </div>
+    <hr>
+      <div class="text-center">
+        <a target="_blank" href="#"><img src="{% static 'dist/img/logo.png' %}" width="250px" style="width: 250px"></a>
+      </div>
+
+    <div class="row">
+
+          <!-- SECCION 1 -->
+          <section id="seccion1"> 
+          <p>{{ form.errors.as_text }}</p>
+              <!-- <h2 style="text-align: center;">DATOS DEL ACAMPANTE</h2> -->
+              <br><br>
+              <div class="row">
+                  <div class="col-md-4 text-center top5">
+                      <label id="label_nombres" class="text-left"><strong>Nombres</strong></label>
+
+                    {{ form.nombres }}
+                  </div>
+                  <div class="col-md-4 text-center top5">
+                          <label id="label_apellidos" class="text-left"><strong>Apellidos</strong></label>
+                      {{ form.apellidos }}
+                  </div>
+                  <div class="col-md-4 text-center top5">
+                          <label id="label_sexo" class="text-left"><strong>Sexo</strong></label>
+                      {{ form.sexo }}
+                  </div>
+              </div>
+              <br>
+              <div class="row">
+                  <div class="col-md-3 text-center bootstrap-iso top5">
+                          <label id="label_fecha_nacimiento" class="text-left"><strong>Fecha de Nacimiento</strong></label>
+                      
+                              {{ form.nacimiento }}                              
+                  </div>
+                  <div class="col-md-3 text-center top5">
+                          <label id="label_cedula" class="text-left"><strong>Cedula Número</strong></label>
+                      {{ form.cedula }}
+                  </div>
+                  <div class="col-md-3 text-center top5">
+                      <label id="label_edad" class="text-left"><strong>Edad</strong></label>
+                      {{ form.edad }}
+                  </div>
+                  <div class="col-md-3 text-center top5">
+                      <label id="label_telefono" class="text-left"><strong>Teléfono</strong></label>
+                      {{ form.telefono }}
+                  </div>
+              </div>
+              <br>
+              <div class="row">
+                  <div class="col-md-6 text-center top5">
+                          <label id="label_domicilio" class="text-left"><strong>Domicilio</strong></label>
+                      {{ form.domicilio }}
+                  </div>                  
+                  <div class="col-md-3 text-center top5">
+                          <label id="label_celula" class="text-left"><strong>Estas en célula?</strong></label>
+                      {{ form.celula }}
+                  </div>
+                  <div class="col-md-3 text-center top5" id="id_col_lider" style="display: none;">
+                      <label id="lider_celula_label" class="text-left"><strong>Líder de Célula</strong></label>
+                      {{ form.lider_celula }}
+                  </div>
+              </div>
+              <br>
+              <div class="row">
+                  <div class="col-md-4 text-center top5">
+                          <label id="label_bus" class="text-left"><strong>Vas en Bus?</strong></label>
+                      {{ form.bus_si_no }}
+                  </div>                  
+                  <div class="col-md-4 text-center top5">
+                          <label id="label_remera" class="text-left"><strong>Talle de Remera</strong></label>
+                      {{ form.talle_remera }}
+                  </div>
+                  <div class="col-md-4 text-center top5">
+                      <label id="label_primera_vez" class="text-left"><strong>Primera vez en el Campamento Invasión?</strong></label>
+                      {{ form.primera_vez }}
+                  </div>
+              </div>
+              <br>
+              <div class="row">
+                  <div class="col-md-4 text-center top5">
+                          <label id="label_acompanado" class="text-left"><strong>Te acompaña alguien?</strong></label>
+                      {{ form.acompanado }}
+                  </div>                  
+                  <div class="col-md-4 text-center top5" id="col_parentesco" style="display: none;">
+                          <label id="label_parentesco" class="text-left"><strong>Parentesco</strong></label>
+                      {{ form.parentesco }}
+                  </div>
+                  <div class="col-md-4 text-center top5">
+                      <label id="label_nombre_compania" class="text-left" style="display: none;"><strong>Nombre de la persona</strong></label>
+                      {{ form.nombre_compania }}
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-md-12 text-center top5">
+                          <label id="label_acompanado" class="text-left"><strong>Observaciones</strong></label>
+                      {{ form.observaciones }}
+                  </div>    
+              </div>
+
+              <hr>
+              <!-- DISCLAIMER -->
+              <section id="seccion11"> 
+                <h2 style="margin-bottom: 10px">SE EVITARÁ LLEVAR</h2>
+                <p style="margin-left: 50px;"><i class="fa fa-close"></i> Aparatos de música, revistas, juegos electrónicos.</p>
+                <p style="margin-left: 50px;"><i class="fa fa-close"></i> Bebidas energizantes, alcohólicas, cigarrillos, drogas.</p>
+                <p style="margin-left: 50px;"><i class="fa fa-close"></i> Todo aquello que pueda ocasionar la distracción de los asistentes.</p>
+                <h2 style="margin-bottom: 10px">PODRÁN LLEVAR</h2>
+                <p style="margin-left: 50px;"><i class="fa fa-check"></i> Calzado deportivo para diversos juegos.</p>
+                <p style="margin-left: 50px;"><i class="fa fa-check"></i> Repelente de insectos y bloqueador solar.</p>
+                <p style="margin-left: 50px;"><i class="fa fa-check"></i> Medicamentos indicados en caso de tomarlos.</p>
+                <p style="margin-left: 50px;"><i class="fa fa-check"></i> Equipo de higiene personal, NO OLVIDAR LA TOALLA.</p>
+                <p style="margin-left: 50px;"><i class="fa fa-check"></i> <strong> ROPA DE CAMA: SABANA, COLCHA O FRAZADA Y FUNDA </strong> </p>
+                <p style="margin-left: 50px;"><i class="fa fa-check"></i> BIBLIA y un cuaderno para apuntes.</p>
+                <p style="margin-left: 50px;"><i class="fa fa-check"></i> Todo lo que sea necesario para los grupos según indicaciones de sus líderes</p>
+
+                <div class="text-center" style="margin-top: 65px">
+                  <h2 style="color:red">Aviso importante: </h2>
+                  <p style="font-size: 14px"><strong>Para validar tu inscripción al Campamento tenés que abonar el monto a tu Líder de Célula o contactar con Raúl Carmona (0971 502-652)</strong></p>
+                  <!--<a style="font-size: 10px" href="https://applicants.s3.amazonaws.com/FormServer.pdf" target="_blank" class="btn btn-default">PDF</a>
+                  <a style="font-size: 10px" href="https://applicants.s3.amazonaws.com/FormServer.doc" target="_blank" class="btn btn-default">WORD</a>-->
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4" id="label_aceptado">
+                            {{ form.aceptado }}
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+              </section>
+              <!-- FIN DISCLAIMER -->
+          </section>
+          <!-- FIN SECCION 1 -->
+          <ul class="list-inline pull-center">
+              <center><a  class="btn btn-default btn-block pull-center" style="background-color: #002B4B; font-weight :lighter; margin: 0px 30%;" onclick="validar()"><i class="fa fa-save"></i> Enviar </a></center>
+          </ul>
+    </div>
+    </form>
+                </section>
+            </div>
+            <!-- end Page Content-->
+        </div>
+
+<script> 
+  function esta_en_celula(){ 
+    var celula = document.getElementById("id_celula").value;
+    console.log(celula);
+    if(celula == 'Si'){
+      document.getElementById("lider_celula_label").style.display = "table-caption";
+      document.getElementById("id_lider_celula").style.display = "table-caption";
+      document.getElementById("id_col_lider").style.display = "table-caption";
+    }else{
+      document.getElementById("lider_celula_label").style.display = "none";
+      document.getElementById("id_lider_celula").style.display = "none";
+      document.getElementById("id_col_lider").style.display = "none";
+    }
+
+  }
+
+  function compania(){ 
+    var acompanado = document.getElementById("id_acompanado").value;
+    console.log(acompanado);
+    if(acompanado == 'No'){
+      document.getElementById("id_parentesco").style.display = "none";
+      document.getElementById("id_nombre_compania").style.display = "none";
+      document.getElementById("label_parentesco").style.display = "none";
+      document.getElementById("label_nombre_compania").style.display = "none";
+      document.getElementById("col_parentesco").style.display = "none";
+    }else{
+      document.getElementById("id_parentesco").style.display = "none";
+      document.getElementById("col_parentesco").style.display = "table-caption";
+      document.getElementById("id_nombre_compania").style.display = "table-caption";
+      document.getElementById("label_parentesco").style.display = "table-caption";
+      document.getElementById("label_nombre_compania").style.display = "table-caption";
+    }
+
+  }
+
+  function validar(){ 
+          /*Tab 1*/
+          var id_nombres = document.getElementById("id_nombres").value;
+          var id_apellidos = document.getElementById("id_apellidos").value;
+          var id_edad = document.getElementById("id_edad").value;
+          var id_sexo = document.getElementById("id_sexo").value;
+          var id_cedula = document.getElementById("id_cedula").value;
+          var id_nacimiento = document.getElementById("id_nacimiento").value;
+          var id_celula = document.getElementById("id_celula").value;
+          var id_lider_celula = document.getElementById("id_lider_celula").value;
+          var id_domicilio = document.getElementById("id_domicilio").value;
+          var id_telefono = document.getElementById("id_telefono").value;
+          var id_bus_si_no = document.getElementById("id_bus_si_no").value;
+          var id_talle_remera = document.getElementById("id_talle_remera").value;
+          var id_primera_vez = document.getElementById("id_primera_vez").value;
+          var id_acompanado = document.getElementById("id_acompanado").value;
+          var id_parentesco = document.getElementById("id_parentesco").value;
+          var id_nombre_compania = document.getElementById("id_nombre_compania").value;
+
+          var msg1= "";
+          
+          if(id_nombres==""){
+              document.getElementById("label_nombres").style.color="red";
+                  msg1 = msg1 + "<div class='text-left'><li>Nombre</li>";
+          }else{
+              document.getElementById("label_nombres").style.color="#474747";
+          }
+          if(id_apellidos==""){
+              document.getElementById("label_apellidos").style.color="red";
+                  msg1 = msg1 + "<div class='text-left'><li>Apellido</li>";
+          }else{
+              document.getElementById("label_apellidos").style.color="#474747";
+          }
+          if(id_edad==""){
+              document.getElementById("label_edad").style.color="red";
+                  msg1 = msg1 + "<div class='text-left'><li>Edad</li>";
+          }else{
+              document.getElementById("label_edad").style.color="#474747";
+          }
+          if(id_sexo==""){
+              document.getElementById("label_sexo").style.color="red";
+                  msg1 = msg1 + "<div class='text-left'><li>Sexo</li>";
+          }else{
+              document.getElementById("label_sexo").style.color="#474747";
+          }
+          if(id_cedula==""){
+              document.getElementById("label_cedula").style.color="red";
+                  msg1 = msg1 + "<div class='text-left'><li>Cedula de Identidad</li>";
+          }else{
+              document.getElementById("label_cedula").style.color="#474747";
+          }
+          if(id_nacimiento==""){
+              document.getElementById("label_fecha_nacimiento").style.color="red";
+                  msg1 = msg1 + "<div class='text-left'><li>Fecha de Nacimiento</li>";
+          }else{
+              document.getElementById("label_fecha_nacimiento").style.color="#474747";
+          }
+          if(id_celula==""){
+              document.getElementById("label_celula").style.color="red";
+                  msg1 = msg1 + "<div class='text-left'><li>Estas en célula?</li>";
+          }else{
+            if(id_celula == "Si" && id_lider_celula ==""){
+              document.getElementById("lider_celula_label").style.color="red";
+              document.getElementById("label_celula").style.color="#474747";
+              msg1 = msg1 + "<div class='text-left'><li>Lider de Celula</li>";
+            }else if(id_celula == "No"){
+              document.getElementById("label_celula").style.color="#474747";
+            }
+          }
+          if(id_domicilio==""){
+              document.getElementById("label_domicilio").style.color="red";
+                  msg1 = msg1 + "<div class='text-left'><li>Domicilio</li>";
+          }else{
+              document.getElementById("label_domicilio").style.color="#474747";
+          }
+          if(id_telefono==""){
+              document.getElementById("label_telefono").style.color="red";
+                  msg1 = msg1 + "<div class='text-left'><li>Numero de Telefono</li>";
+          }else{
+              document.getElementById("label_telefono").style.color="#474747";
+          }
+          if(id_bus_si_no==""){
+              document.getElementById("label_bus").style.color="red";
+                  msg1 = msg1 + "<div class='text-left'><li>Vas en Bus?</li>";
+          }else{
+              document.getElementById("label_bus").style.color="#474747";
+          }
+          if(id_talle_remera==""){
+              document.getElementById("label_remera").style.color="red";
+                  msg1 = msg1 + "<div class='text-left'><li>Talle de la Remera</li>";
+          }else{
+              document.getElementById("label_remera").style.color="#474747";
+          }
+          if(id_primera_vez==""){
+              document.getElementById("label_primera_vez").style.color="red";
+                  msg1 = msg1 + "<div class='text-left'><li>Primera vez en el Campamento Invasión?</li>";
+          }else{
+              document.getElementById("label_primera_vez").style.color="#474747";
+          }
+          if(id_acompanado==""){
+              document.getElementById("label_acompanado").style.color="red";
+              msg1 = msg1 + "<div class='text-left'><li>Te acompaña alguien?</li>";
+          }else{
+            if(id_acompanado == "Si" && id_parentesco == ""){
+              document.getElementById("label_parentesco").style.color="red";
+              msg1 = msg1 + "<div class='text-left'><li>Parentesco</li>";
+            }else if(id_parentesco != "" && id_nombre_compania == ""){
+              document.getElementById("label_nombre_compania").style.color="red";
+              msg1 = msg1 + "<div class='text-left'><li>Nombre de la persona que acompaña</li>";
+            }
+          }
+          if(msg1 != ""){
+             swal({  title: "Oops..!", 
+                          text: "Completa los siguientes campos <br>"+msg1+"", 
+                          type:"error",
+                          html: true,
+                          confirmButtonColor: "#002B4B",
+                          closeOnConfirm: false
+              });
+          }else{
+            $(".cargando").show();
+            document.getElementById("eo").submit();
+          }
+  }
+
+
+</script>
+
+
+{% endblock %}
+
+{% block extrascripts %}
+        <script src="{% static 'sweetalert-master/dist/sweetalert.min.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'sweetalert-master/dist/sweetalert.css' %}">
+{% endblock %}

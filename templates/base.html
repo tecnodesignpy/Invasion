@@ -1,0 +1,419 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}International Connections {% endblock %}</title>
+
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link href="{% static 'fonts/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap-select.min.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/dropzone.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/jquery.ui.timepicker.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'favicon.png' %}">
+<style> 
+.image-preview-input {
+    position: relative;
+    overflow: hidden;
+    margin: 0px;    
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;    
+}
+.image-preview-input input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.image-preview-input-title {
+    margin-left:2px;
+}
+.wizard {
+    margin: 20px auto;
+}
+
+    .wizard .nav-tabs {
+        position: relative;
+        margin: 40px auto;
+        margin-bottom: 0;
+        border-bottom-color: #e0e0e0;
+    }
+
+    .wizard > div.wizard-inner {
+        position: relative;
+    }
+
+.connecting-line {
+    height: 2px;
+    position: absolute;
+    width: 80%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    z-index: 1;
+}
+
+.wizard .nav-tabs > li.active > a, .wizard .nav-tabs > li.active > a:hover, .wizard .nav-tabs > li.active > a:focus {
+    color: #555555;
+    cursor: default;
+    border: 0;
+    border-bottom-color: transparent;
+}
+
+span.round-tab {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    display: inline-block;
+    border-radius: 100px;
+    border: 2px solid #e0e0e0;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    text-align: center;
+    font-size: 25px;
+}
+span.round-tab i{
+    color:#555555;
+}
+.wizard li.active span.round-tab {
+    border: 2px solid #5bc0de;
+    
+}
+.wizard li.active span.round-tab i{
+    color: #5bc0de;
+}
+
+span.round-tab:hover {
+    color: #333;
+    border: 2px solid #333;
+}
+
+.wizard .nav-tabs > li {
+    width: 20%;
+}
+
+.wizard li:after {
+    content: " ";
+    position: absolute;
+    left: 46%;
+    opacity: 0;
+    margin: 0 auto;
+    bottom: 0px;
+    border: 5px solid transparent;
+    border-bottom-color: #5bc0de;
+    transition: 0.1s ease-in-out;
+}
+
+.wizard li.active:after {
+    content: " ";
+    position: absolute;
+    left: 46%;
+    opacity: 1;
+    margin: 0 auto;
+    bottom: 0px;
+    border: 10px solid transparent;
+    border-bottom-color: #5bc0de;
+}
+
+.wizard .nav-tabs > li a {
+    width: 70px;
+    height: 70px;
+    margin: 20px auto;
+    border-radius: 100%;
+    padding: 0;
+}
+
+    .wizard .nav-tabs > li a:hover {
+        background: transparent;
+    }
+
+.wizard .tab-pane {
+    position: relative;
+    padding-top: 50px;
+}
+
+.wizard h3 {
+    margin-top: 0;
+}
+
+@media( max-width : 585px ) {
+
+    .wizard {
+        width: 90%;
+        height: auto !important;
+    }
+
+    span.round-tab {
+        font-size: 16px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .wizard .nav-tabs > li a {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .wizard li.active:after {
+        content: " ";
+        position: absolute;
+        left: 35%;
+    }
+}
+
+</style>
+    {% block extraheaders %}
+    {% endblock %}
+  </head>
+  {% block body %}<body class="page-subpage page-submit navigation-off-canvas" id="page-top">{% endblock %}
+<!-- Outer Wrapper-->
+  <div id="outer-wrapper">
+    <!-- Inner Wrapper -->
+    <div id="inner-wrapper">
+        <!-- Main content -->
+    
+        <section class="content">
+        	    {% block content %}
+
+			    {% endblock %}
+        </section>
+        
+        <!-- /.content -->
+      </div><!-- /.content-wrapper -->
+      
+      {% block footer %}
+        <!--Page Footer-->
+        <footer id="page-footer">
+            <div class="inner">
+                <div class="footer-bottom">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-lg-12 col-md-12 col-xs-12 text-center">
+                          <br>
+                          Desarrollado por <a href="http://www.tecnodesign.com.py" target="_blank"><img src="{% static 'dist/img/TD.png' %}" width="110px"></a>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-xs-12 text-center">
+                          
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <!--/.footer-bottom-->
+            </div>
+        </footer>
+        <!--end Page Footer-->
+        {% endblock %}
+        
+    </div><!-- ./wrapper -->
+	
+    <!-- jQuery 2.1.4 -->
+    <script type="text/javascript" src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/before.load.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery-migrate-1.2.1.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/smoothscroll.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap-select.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/icheck.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.hotkeys.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/dropzone.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.ui.timepicker.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/maps.js' %}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+    //Initialize tooltips
+    $('.nav-tabs > li a[title]').tooltip();
+    
+    //Wizard
+    $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+
+        var $target = $(e.target);
+    
+        if ($target.parent().hasClass('disabled')) {
+            return false;
+        }
+    });
+
+    $(".next-step").click(function (e) {
+
+        var $active = $('.wizard .nav-tabs li.active');
+        $active.next().removeClass('disabled');
+        nextTab($active);
+
+    });
+    $(".prev-step").click(function (e) {
+
+        var $active = $('.wizard .nav-tabs li.active');
+        prevTab($active);
+
+    });
+});
+
+function nextTab(elem) {
+    $(elem).next().find('a[data-toggle="tab"]').click();
+}
+function prevTab(elem) {
+    $(elem).prev().find('a[data-toggle="tab"]').click();
+}
+    </script>
+    <script type="text/javascript">
+$(document).on('click', '#close-preview', function(){ 
+    $('.image-preview').popover('hide');
+    // Hover befor close the preview
+    $('.image-preview').hover(
+        function () {
+           $('.image-preview').popover('show');
+        }, 
+         function () {
+           $('.image-preview').popover('hide');
+        }
+    );    
+});
+
+$(function() {
+    // Create the close button
+    var closebtn = $('<button/>', {
+        type:"button",
+        text: 'x',
+        id: 'close-preview',
+        style: 'font-size: initial;',
+    });
+    closebtn.attr("class","close pull-right");
+    // Set the popover default content
+    $('.image-preview').popover({
+        trigger:'manual',
+        html:true,
+        title: "<strong>Preview / Vista Previa</strong>"+$(closebtn)[0].outerHTML,
+        content: "There's no Image / No ha insertado su Imagen",
+        placement:'bottom'
+    });
+    // Clear event
+    $('.image-preview-clear').click(function(){
+        $('.image-preview').attr("data-content","").popover('hide');
+        $('.image-preview-filename').val("");
+        $('.image-preview-clear').hide();
+        $('.image-preview-input input:file').val("");
+        $(".image-preview-input-title").text("Browse"); 
+    }); 
+    // Create the preview image
+    $(".image-preview-input input:file").change(function (){     
+        var img = $('<img/>', {
+            id: 'dynamic',
+            width:250,
+            height:200
+        });      
+        var file = this.files[0];
+        var reader = new FileReader();
+        var size = file.size
+        /*if(size>3000000){
+                $(".check_foto_perfil").hide();
+              document.getElementById("label_foto_perfil").style.color="red";
+              swal({  title: "Oops..!", 
+                          text: "Please verify your profile picture "+Math.round(size/1000000)+"Mb<br> Por favor verifique su foto de perfil "+Math.round(size/1000000)+"Mb", 
+                          type:"error",
+                          html: true,
+                          confirmButtonColor: "#002B4B",
+                          closeOnConfirm: false
+              });
+        }else{
+            $(".check_foto_perfil").show();
+            document.getElementById("label_foto_perfil").style.color="green";
+            // Set preview image into the popover data-content
+            reader.onload = function (e) {
+                $(".image-preview-input-title").text("Change");
+                $(".image-preview-clear").show();
+                $(".image-preview-filename").val(file.name);
+                document.getElementById("image-preview-filename").style.color="green";            
+                img.attr('src', e.target.result);
+                $(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
+            }        
+            reader.readAsDataURL(file);
+        }*/
+
+            $(".check_foto_perfil").show();
+            document.getElementById("label_foto_perfil").style.color="green";
+            // Set preview image into the popover data-content
+            reader.onload = function (e) {
+                $(".image-preview-input-title").text("Change");
+                $(".image-preview-clear").show();
+                $(".image-preview-filename").val(file.name);
+                document.getElementById("image-preview-filename").style.color="green";            
+                img.attr('src', e.target.result);
+                $(".image-preview").attr("data-content",$(img)[0].outerHTML).popover("show");
+            }        
+            reader.readAsDataURL(file);
+    });  
+});
+function sacar_check(){
+    $(".check_foto_perfil").hide();
+    document.getElementById("label_foto_perfil").style.color="#474747";
+}
+</script>
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+{% if mensaje == "True" %}
+          <script>
+            function repetido(){
+                    swal({  title: "Oops..!", 
+                                text: "Good news! We already have your application form on our data base. You don't need to fill one again.<br>Buenas noticias! Ya tenemos tu formulario en nuestra base de datos, no necesitas volver a completar el formulario.", 
+                                type:"warning",
+                                html: true,
+                                confirmButtonColor: "#002B4B",
+                                confirmButtonText: "Exit",
+                                showCancelButton: true,
+                                closeOnConfirm: false
+                    },
+                      function(){
+                        window.location="/menu";
+                    });
+             } 
+          </script>
+{% endif %}
+
+
+
+<script>
+    $(document).ready(function(){
+        var date_input=$('input[name="date"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso').length>0 ? $('.bootstrap-iso').parent() : "body";
+        date_input.datepicker({
+            format: 'mm/dd/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-101898069-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    {% block extrascripts %}
+    {% endblock %}
+  </body>
+</html>
