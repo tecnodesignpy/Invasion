@@ -1,4 +1,5 @@
 from django.db import models
+from randomslugfield import RandomSlugField
 
 # Create your models here.
 
@@ -23,7 +24,7 @@ def pkgen():
 
 class formulario(models.Model):
 	#Seccion 1
-    id = models.CharField(max_length=6, primary_key=True, default=pkgen)
+    id = RandomSlugField(length=3, exclude_upper=True, exclude_vowels=True, primary_key=True)
     nombres = models.CharField(max_length=200, blank='true', null='true',)
     apellidos = models.CharField(max_length=200, blank='true', null='true')
     edad = models.CharField(max_length=10, blank='true', null='true')

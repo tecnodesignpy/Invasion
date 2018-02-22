@@ -87,3 +87,5 @@ class PDF(View):
         buffer.close()
         response.write(pdf)
         return response
+
+

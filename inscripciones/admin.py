@@ -48,7 +48,7 @@ class EdadFilter(admin.SimpleListFilter):
 
 	
 class FormularioAdmin(admin.ModelAdmin):
-    list_display = (u'id','fecha_completado','nombres','apellidos','edad')
+    list_display = (u'id','fecha_completado','nombres','apellidos','edad','nacimiento','pagado')
     #list_filter = (EdadFilter,NacionalidadFilter,'genero','nivel_ingles','experiencia_years','fumador','licencia_usa','recontratado','trabajo',)
     #search_fields = ['pais','nombres','edad','id','apellidos','experiencia','company_name','Experiencia_Laboral','comment','hear_about','recrutier','conocimiento_mecanica','consulado_cercano','ciudad','calle_nombre','email','status','genero','facebook_name','skype_name',]
     ordering = ('-fecha_completado',)
