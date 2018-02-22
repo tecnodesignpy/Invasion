@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+ {% block body %}<body class="page-subpage page-submit navigation-off-canvas" id="page-top"  onload="onload('{{codigo}}')">{% endblock %}
+{% block content %}
+    <div id="page-canvas">
+
+                <br>
+                <center><a href="/menu"><img src="{% static 'dist/img/logo.png' %}"></a></center>
+                <br>
+    </div>
+
+<script> 
+function onload(codigo){ 
+    var codigo = codigo;
+    swal({
+        title: "",
+        text: "<h1 style='text-transform:none'>Código de Pre-Inscripción: "+codigo+"</h1><br>No olvides abonar el monto para validar tu inscripción! <br><br> ESTAMOS GENERANDO EL PDF.",
+        html: true,
+        type: "success",
+        confirmButtonColor: "#002B4B",
+        confirmButtonText: "Ok",
+        closeOnConfirm: false
+        });
+    window.setTimeout(function(){
+
+        // Move to a new location or you can do something else
+        window.location="/inscripcion/pdf/"+codigo;
+
+    }, 5000);
+    
+}
+</script>
+
+{% endblock %}
+
+    {% block extrascripts %}
+        <script src="{% static 'sweetalert-master/dist/sweetalert.min.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'sweetalert-master/dist/sweetalert.css' %}">
+    {% endblock %}
+
+
+{% block footer %}
+
+        <!--Page Footer-->
+        <footer id="page-footer">
+            <div class="inner">
+                <div class="footer-bottom">
+                    <div class="container">
+                        <span class="left">(C) Desarrollado por <a href="https://www.tecnodesign.com.py" target="_blank"><img src="{% static 'dist/img/TD.png' %}" width="110px"></a></span>
+                    </div>
+                </div>
+                <!--/.footer-bottom-->
+            </div>
+        </footer>
+        <!--end Page Footer-->
+        {% endblock %}

@@ -35,11 +35,15 @@ def inscripciones(request):
     	if form.is_valid():
     		dato = form.save()
     		datos = formulario.objects.get(id=dato.pk)
-    		return redirect('inscripcion:pdf',id=datos.id)
+    		return redirect('inscripcion:success',id=datos.id)
     else:
         form = InscripcionForm()
     return render(request, 'formulario.html',{'form':form})
 
+def success(request,id):
+    codigo=id
+    return render(request, 'success.html',{'codigo':codigo})
+    return redirect('inscripcion:pdf',id=codigo)
 
 class PDF(View):
     def cabecera(self,pdf,datos):

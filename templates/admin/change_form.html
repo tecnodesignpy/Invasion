@@ -31,39 +31,7 @@
     <li>
         {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
         <a href="{% add_preserved_filters history_url %}" class="historylink">{% trans "History" %}</a>
-        {% if opts.model_name == 'equipment_operator' %}
-            <a target="_blank" href="http://applicants.internationalconnections.net/pdf/ic/equipmentoperator/?q={{ original.pk }}" class="button" style="background-color: #002B4B">{% trans "PDF" %}</a>
-        {% endif %}
-        {% if opts.model_name == 'beekeeper' %}
-            <a target="_blank" href="http://applicants.internationalconnections.net/pdf/ic/beekeeper/?q={{ original.pk }}" class="button" style="background-color: #002B4B">{% trans "PDF" %}</a>
-        {% endif %}
-        {% if opts.model_name == 'farmer' %}
-            <a target="_blank" href="http://applicants.internationalconnections.net/pdf/ic/farmer/?q={{ original.pk }}" class="button" style="background-color: #002B4B">{% trans "PDF" %}</a>
-        {% endif %}
-        {% if opts.model_name == 'construction' %}
-            <a target="_blank" href="http://applicants.internationalconnections.net/pdf/ic/construction/?q={{ original.pk }}" class="button" style="background-color: #002B4B">{% trans "PDF" %}</a>
-        {% endif %}
-        {% if opts.model_name == 'cook' %}
-            <a target="_blank" href="http://applicants.internationalconnections.net/pdf/ic/cook/?q={{ original.pk }}" class="button" style="background-color: #002B4B">{% trans "PDF" %}</a>
-        {% endif %}
-        {% if opts.model_name == 'driver' %}
-            <a target="_blank" href="http://applicants.internationalconnections.net/pdf/ic/driver/?q={{ original.pk }}" class="button" style="background-color: #002B4B">{% trans "PDF" %}</a>
-        {% endif %}
-        {% if opts.model_name == 'housekeeper' %}
-            <a target="_blank" href="http://applicants.internationalconnections.net/pdf/ic/housekeeper/?q={{ original.pk }}" class="button" style="background-color: #002B4B">{% trans "PDF" %}</a>
-        {% endif %}
-        {% if opts.model_name == 'landscaper' %}
-            <a target="_blank" href="http://applicants.internationalconnections.net/pdf/ic/landscaper/?q={{ original.pk }}" class="button" style="background-color: #002B4B">{% trans "PDF" %}</a>
-        {% endif %}
-        {% if opts.model_name == 'roofer' %}
-            <a target="_blank" href="http://applicants.internationalconnections.net/pdf/ic/roofer/?q={{ original.pk }}" class="button" style="background-color: #002B4B">{% trans "PDF" %}</a>
-        {% endif %}
-        {% if opts.model_name == 'server' %}
-            <a target="_blank" href="http://applicants.internationalconnections.net/pdf/ic/server/?q={{ original.pk }}" class="button" style="background-color: #002B4B">{% trans "PDF" %}</a>
-        {% endif %}
-        {% if opts.model_name == 'rehired' %}
-            <a target="_blank" href="http://applicants.internationalconnections.net/pdf/ic/rehired/?q={{ original.pk }}" class="button" style="background-color: #002B4B">{% trans "PDF" %}</a>
-        {% endif %}
+        <a target="_blank" href="http://invasion.com.py/inscripcion/pdf/{{ original.pk }}" class="button" style="background-color: #002B4B">{% trans "PDF" %}</a>
     </li>
     {% if has_absolute_url %}<li><a href="{{ absolute_url }}" class="viewsitelink">{% trans "View on site" %}</a></li>{% endif %}
     {% endblock %}
