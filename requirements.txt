@@ -2,3 +2,4 @@ Django==1.11
 Pillow==5.0.0
 pytz==2018.3
 reportlab==3.4.0
+psycopg2
