@@ -10,7 +10,7 @@ class FormularioAdmin(admin.ModelAdmin):
     list_display = (u'id','fecha_completado','nombres','apellidos','edad','nacimiento','lider_celula','pagado','fecha_pagado','account_actions',)
     #list_filter = (EdadFilter,NacionalidadFilter,'genero','nivel_ingles','experiencia_years','fumador','licencia_usa','recontratado','trabajo',)
     search_fields = ['id','lider_celula','nombres','cedula','apellidos']
-    ordering = ('-fecha_completado',)
+    ordering = ('nombres',)
     save_on_top = True
     readonly_fields = ['fecha_pagado']
 
