@@ -50,7 +50,7 @@ class formulario(models.Model):
 
 
     
-    def save(self, *args, **kwargs):
+    def update(self, *args, **kwargs):
         pagado_var = str(self.pagado)
         print(pagado_var)
         if pagado_var == False:

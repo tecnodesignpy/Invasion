@@ -13,6 +13,7 @@ class FormularioAdmin(admin.ModelAdmin):
     ordering = ('nombres',)
     save_on_top = True
     readonly_fields = ['fecha_pagado']
+    show_full_result_count = True
 
     def account_actions(self, obj):
         print(obj.fecha_pagado)
@@ -30,6 +31,10 @@ class FormularioAdmin(admin.ModelAdmin):
             )
     account_actions.short_description = 'Botones'
     account_actions.allow_tags = True
+
+    def edad(self, obj):
+        print(obj.count)
+        return obj.count 
 
 def _register(model, admin_class):
     admin.site.register(model, admin_class)
