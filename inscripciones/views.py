@@ -3,6 +3,7 @@ from .models import *
 from .forms import *
 from django.views.decorators.csrf import csrf_exempt
 from datetime import datetime
+from django.contrib.auth.decorators import login_required
 
 #PDF
 #Importamos settings para poder tener a la mano la ruta de la carpeta media // Para el PDF
@@ -45,12 +46,15 @@ def success(request,id):
     codigo=id
     return render(request, 'success.html',{'codigo':codigo})
 
+@login_required(login_url='/admin')
 def pagar(request,id):
     codigo=id
-    print(codigo)
+    current_user = request.user
+    print(current_user.first_name)
     datos = formulario.objects.get(id=codigo)
     datos.fecha_pagado = datetime.now()
     datos.pagado = True
+    datos.usuario_pago = current_user.first_name
     datos.save()
     return redirect('/admin/inscripciones/formulario/')
 

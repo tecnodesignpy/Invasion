@@ -43,9 +43,24 @@ class formulario(models.Model):
     nombre_compania = models.CharField(max_length=200, blank='true', null='true')
     fecha_completado = models.DateField(auto_now_add=True)
     pagado = models.BooleanField(default=False)
+    usuario_pago = models.CharField(max_length=200, blank='true', null='true')
     fecha_pagado = models.CharField(max_length=200, blank='true', null='true')
     team = models.CharField(max_length=200, blank='true', null='true')
     observaciones = models.TextField(max_length=500, blank='true', null='true')
+
+
+    
+    def save(self, *args, **kwargs):
+        pagado_var = str(self.pagado)
+        print(pagado_var)
+        if pagado_var == False:
+            self.fecha_pagado = ''
+        super(formulario, self).save(*args, **kwargs)
     
     def __str__(self):
         return str(self.id) 
+
+
+
+
+
