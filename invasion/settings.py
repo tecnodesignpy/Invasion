@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
 
+    # PLUGINS
+    'randomslugfield',
+    'import_export',
+
     # APP'S
     'inscripciones',
 ]
@@ -78,6 +82,7 @@ WSGI_APPLICATION = 'invasion.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+
 '''
 DATABASES = {
     'default': {
@@ -97,7 +102,6 @@ DATABASES = {
      'PORT': 5432,
     }
 }
-
 
 
 # Password validation
