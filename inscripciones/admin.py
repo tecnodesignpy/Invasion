@@ -1,12 +1,20 @@
 from django.contrib import admin
 from . import models
+#Para el boton de EXPORTAR
+from import_export import resources
+from import_export.admin import ImportExportModelAdmin, ExportMixin
 
 # Para los boton de ACCIONES
 from django.utils.html import format_html
 from django.core.urlresolvers import reverse
 
 	
-class FormularioAdmin(admin.ModelAdmin):
+class FomularioResource(resources.ModelResource):
+
+    class Meta:
+        model = models.formulario
+
+class FormularioAdmin(ExportMixin, admin.ModelAdmin):
     list_display = (u'id','fecha_completado','nombres','apellidos','edad','lider_celula','pagado','fecha_pagado','observaciones','usuario_pago','account_actions',)
     #list_filter = (EdadFilter,NacionalidadFilter,'genero','nivel_ingles','experiencia_years','fumador','licencia_usa','recontratado','trabajo',)
     search_fields = ['id','lider_celula','nombres','cedula','apellidos']
@@ -14,6 +22,7 @@ class FormularioAdmin(admin.ModelAdmin):
     save_on_top = True
     readonly_fields = ['fecha_pagado']
     show_full_result_count = True
+    resource_class = FomularioResource
 
     def account_actions(self, obj):
         print(obj.fecha_pagado)
