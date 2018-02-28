@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 
 	
 class FormularioAdmin(admin.ModelAdmin):
-    list_display = (u'id','fecha_completado','nombres','apellidos','edad','lider_celula','pagado','fecha_pagado','usuario_pago','account_actions',)
+    list_display = (u'id','fecha_completado','nombres','apellidos','edad','lider_celula','pagado','fecha_pagado','observaciones','usuario_pago','account_actions',)
     #list_filter = (EdadFilter,NacionalidadFilter,'genero','nivel_ingles','experiencia_years','fumador','licencia_usa','recontratado','trabajo',)
     search_fields = ['id','lider_celula','nombres','cedula','apellidos']
     ordering = ('nombres',)
