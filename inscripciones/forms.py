@@ -19,5 +19,6 @@ class InscripcionForm (forms.ModelForm):
             'observaciones': forms.Textarea(attrs={'class':'form-control','style':'width: 100%;'}),
             'edad': forms.TextInput(attrs={'class':'form-control','placeholder':' A partir de 13 y hasta 35 años'}),
             'lider_celula': forms.TextInput(attrs={'class':'form-control','style':'width: 100%;','placeholder':' Nombre completo del Lider'}),
+            'cedula': forms.TextInput(attrs={'class':'form-control','placeholder':'Sin puntos (Ej: 3988489)'}),
 		}
 		
