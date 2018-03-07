@@ -1,6 +1,7 @@
 *.pyc
 __ pycache __
 Inva
+env
 db.sqlite3
 Inscripciones/migrations
 .DS_Store
