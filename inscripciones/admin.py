@@ -8,7 +8,7 @@ from import_export.admin import ImportExportModelAdmin, ExportMixin
 from django.utils.html import format_html
 from django.core.urlresolvers import reverse
 
-	
+
 class FomularioResource(resources.ModelResource):
 
     class Meta:
@@ -16,7 +16,7 @@ class FomularioResource(resources.ModelResource):
 
 class FormularioAdmin(ExportMixin, admin.ModelAdmin):
     list_display = (u'id','fecha_completado','nombres','apellidos','edad','lider_celula','pagado','fecha_pagado','observaciones','usuario_pago','account_actions',)
-    list_filter = ('usuario_pago','pagado','fecha_completado')
+    list_filter = ('usuario_pago','pagado','fecha_pagado','capitan','staff','colaborador')
     search_fields = ['id','lider_celula','nombres','cedula','apellidos']
     ordering = ('nombres',)
     save_on_top = True
