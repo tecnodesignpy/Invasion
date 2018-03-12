@@ -17,7 +17,7 @@ class FomularioResource(resources.ModelResource):
 class FormularioAdmin(ExportMixin, admin.ModelAdmin):
     list_display = (u'id','fecha_completado','nombres','apellidos','edad','lider_celula','pagado','fecha_pagado','observaciones','usuario_pago','account_actions',)
     list_filter = ('usuario_pago','pagado','capitan','staff','colaborador')
-    search_fields = ['id','lider_celula','nombres','cedula','apellidos','telefono']
+    search_fields = ['id','lider_celula','nombres','cedula','apellidos','telefono','fecha_pagado']
     ordering = ('nombres',)
     save_on_top = True
     readonly_fields = ['fecha_pagado']
