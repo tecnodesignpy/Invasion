@@ -453,7 +453,14 @@
         <a target="_blank" href="#"><img src="{% static 'dist/img/logo.png' %}" width="250px" style="width: 250px"></a>
       </div>
 
-    <div class="row">
+    <center>
+      <hr>
+      <h2 style="color: red">¡AVISO!</h2>
+      <h4>Los cupos están llenos. Te esperamos en el campamento Invasión 2019!</h4>
+      <hr>
+    </center>
+
+    <div class="row" style="display: none">
           <center>
             <hr>
             <h2 style="color: red">¡AVISO!</h2>
@@ -462,9 +469,8 @@
           </center>
 
           <!-- SECCION 1 -->
-          <section id="seccion1"> 
-          <p>{{ form.errors.as_text }}</p>
-              <!-- <h2 style="text-align: center;">DATOS DEL ACAMPANTE</h2> -->
+          <section id="seccion1" style="display: none"> 
+              <p>{{ form.errors.as_text }}</p>
               <br><br>
               <div class="row">
                   <div class="col-md-4 text-center top5">
@@ -587,7 +593,7 @@
               <!-- FIN DISCLAIMER -->
           </section>
           <!-- FIN SECCION 1 -->
-          <ul class="list-inline pull-center">
+          <ul class="list-inline pull-center" style="display: none">
               <center><a  class="btn btn-default btn-block pull-center" style="background-color: #002B4B; font-weight :lighter; margin: 0px 30%;" onclick="validar()"><i class="fa fa-save"></i> Enviar </a></center>
           </ul>
     </div>
