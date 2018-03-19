@@ -166,14 +166,14 @@ def teams(request):
     for p in iterable:
         if((len(ovejas) <= division) and (len(ovejas) <= len(leones) and len(ovejas) <= len(bufalos) and len(ovejas) <= len(aguilas)) ):
             if((int(p.edad) >= 12 and int(p.edad) <= 17) and (int(edad_oveja1) <= round((edad1/4)))):
-                if(p.sexo == "M" and masculino_ovejas1 < round(masculino1/4)):
+                if((p.sexo == "M") and (masculino_ovejas1 < round(masculino1/4))):
                     ovejas.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Ovejas"
                     datos.save()
                     masculino_ovejas1 = masculino_ovejas1 +1
                     edad_oveja1 = edad_oveja1 +1
-                elif(p.sexo == "F" and femenino_ovejas1 < round(femenino1/4)):
+                elif((p.sexo == "F") and (femenino_ovejas1 < round(femenino1/4))):
                     ovejas.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Ovejas"
@@ -181,14 +181,14 @@ def teams(request):
                     femenino_ovejas1 = femenino_ovejas1 +1
                     edad_oveja1 = edad_oveja1 +1
             elif((int(p.edad) >= 18 and int(p.edad) <= 24) and (int(edad_oveja2) <= round((edad2/4)))):
-                if(p.sexo == "M" and masculino_ovejas2 < round(masculino2/4)):
+                if((p.sexo == "M") and (masculino_ovejas2 < round(masculino2/4))):
                     ovejas.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Ovejas"
                     datos.save()
                     masculino_ovejas2 = masculino_ovejas2 +1
                     edad_oveja2 = edad_oveja2 +1
-                elif(p.sexo == "F" and femenino_ovejas2 < round(femenino2/4)):
+                elif((p.sexo == "F") and (femenino_ovejas2 < round(femenino2/4))):
                     ovejas.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Ovejas"
@@ -196,14 +196,14 @@ def teams(request):
                     femenino_ovejas2 = femenino_ovejas2 +1
                     edad_oveja2 = edad_oveja2 +1
             elif((int(p.edad) >= 25 and int(p.edad) <= 32) and (int(edad_oveja3) <= round((edad3/4)))):
-                if(p.sexo == "M" and masculino_ovejas3 < round(masculino3/4)):
+                if((p.sexo == "M") and (masculino_ovejas3 < round(masculino3/4))):
                     ovejas.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Ovejas"
                     datos.save()
                     masculino_ovejas3 = masculino_ovejas3 +1
                     edad_oveja3 = edad_oveja3 +1
-                elif(p.sexo == "F" and femenino_ovejas3 < round(femenino3/4)):
+                elif((p.sexo == "F") and (femenino_ovejas3 < round(femenino3/4))):
                     ovejas.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Ovejas"
@@ -211,14 +211,14 @@ def teams(request):
                     femenino_ovejas3 = femenino_ovejas3 +1
                     edad_oveja3 = edad_oveja3 +1
             elif((int(p.edad) >= 33 and int(p.edad) <= 40) and (int(edad_oveja4) <= round((edad4/4)))):
-                if(p.sexo == "M" and masculino_ovejas4 < round(masculino4/4)):
+                if((p.sexo == "M") and (masculino_ovejas4 < round(masculino4/4))):
                     ovejas.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Ovejas"
                     datos.save()
                     masculino_ovejas4 = masculino_ovejas4 +1
                     edad_oveja4 = edad_oveja4 +1
-                elif(p.sexo == "F" and femenino_ovejas4 < round(femenino4/4)):
+                elif((p.sexo == "F") and (femenino_ovejas4 < round(femenino4/4))):
                     ovejas.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Ovejas"
@@ -231,14 +231,14 @@ def teams(request):
                 datos.save()
         elif((len(leones) <= division) and (len(leones) <= len(ovejas) and len(leones) <= len(bufalos) and len(leones) <= len(aguilas)) ):
             if((int(p.edad) >= 12 and int(p.edad) <= 17) and (int(edad_leones1) <= round((edad1/4)))):
-                if(p.sexo == "M" and masculino_leones1 < round(masculino1/4)):
+                if((p.sexo == "M") and (masculino_leones1 < round(masculino1/4))):
                     leones.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Leones"
                     datos.save()
                     masculino_leones1 = masculino_leones1 +1
                     edad_leones1 = edad_leones1 +1
-                elif(p.sexo == "F" and femenino_leones1 < round(femenino1/4)):
+                elif((p.sexo == "F") and (femenino_leones1 < round(femenino1/4))):
                     leones.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Leones"
@@ -246,14 +246,14 @@ def teams(request):
                     femenino_leones1 = femenino_leones1 +1
                     edad_leones1 = edad_leones1 +1
             elif((int(p.edad) >= 18 and int(p.edad) <= 24) and (int(edad_leones2) <= round((edad2/4)))):
-                if(p.sexo == "M" and masculino_leones2 < round(masculino2/4)):
+                if((p.sexo == "M") and (masculino_leones2 < round(masculino2/4))):
                     leones.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Leones"
                     datos.save()
                     masculino_leones2 = masculino_leones2 +1
                     edad_leones2 = edad_leones2 +1
-                elif(p.sexo == "F" and femenino_leones2 < round(femenino2/4)):
+                elif((p.sexo == "F") and (femenino_leones2 < round(femenino2/4))):
                     leones.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Leones"
@@ -261,14 +261,14 @@ def teams(request):
                     femenino_leones2 = femenino_leones2 +1
                     edad_leones2 = edad_leones2 +1
             elif((int(p.edad) >= 25 and int(p.edad) <= 32) and (int(edad_leones3) <= round((edad3/4)))):
-                if(p.sexo == "M" and masculino_leones3 < round(masculino3/4)):
+                if((p.sexo == "M") and (masculino_leones3 < round(masculino3/4))):
                     leones.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Leones"
                     datos.save()
                     masculino_leones3 = masculino_leones3 +1
                     edad_leones3 = edad_leones3 +1
-                elif(p.sexo == "F" and femenino_leones3 < round(femenino3/4)):
+                elif((p.sexo == "F") and (femenino_leones3 < round(femenino3/4))):
                     leones.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Leones"
@@ -276,14 +276,14 @@ def teams(request):
                     femenino_leones3 = femenino_leones3 +1
                     edad_leones3 = edad_leones3 +1
             elif((int(p.edad) >= 33 and int(p.edad) <= 40) and (int(edad_leones4) <= round((edad4/4)))):
-                if(p.sexo == "M" and masculino_leones4 < round(masculino4/4)):
+                if((p.sexo == "M") and (masculino_leones4 < round(masculino4/4))):
                     leones.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Leones"
                     datos.save()
                     masculino_leones4 = masculino_leones4 +1
                     edad_leones4 = edad_leones4 +1
-                elif(p.sexo == "F" and femenino_leones4 < round(femenino4/4)):
+                elif((p.sexo == "F") and (femenino_leones4 < round(femenino4/4))):
                     leones.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Leones"
@@ -296,14 +296,14 @@ def teams(request):
                 datos.save()
         elif((len(bufalos) <= division) and (len(bufalos) <= len(ovejas) and len(bufalos) <= len(leones) and len(bufalos) <= len(aguilas)) ):            
             if((int(p.edad) >= 12 and int(p.edad) <= 17) and (int(edad_bufalos1) <= round((edad1/4)))):
-                if(p.sexo == "M" and masculino_bufalos1 < round(masculino1/4)):
+                if((p.sexo == "M") and (masculino_bufalos1 < round(masculino1/4))):
                     bufalos.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Bufalos"
                     datos.save()
                     masculino_bufalos1 = masculino_bufalos1 +1
                     edad_bufalos1 = edad_bufalos1 +1
-                elif(p.sexo == "F" and femenino_bufalos1 < round(femenino1/4)):
+                elif((p.sexo == "F") and (femenino_bufalos1 < round(femenino1/4))):
                     bufalos.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Bufalos"
@@ -311,14 +311,14 @@ def teams(request):
                     femenino_bufalos1 = femenino_bufalos1 +1
                     edad_bufalos1 = edad_bufalos1 +1
             elif((int(p.edad) >= 18 and int(p.edad) <= 24) and (int(edad_bufalos2) <= round((edad2/4)))):
-                if(p.sexo == "M" and masculino_bufalos2 < round(masculino2/4)):
+                if((p.sexo == "M") and (masculino_bufalos2 < round(masculino2/4))):
                     bufalos.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Bufalos"
                     datos.save()
                     masculino_bufalos2 = masculino_bufalos2 +1
                     edad_bufalos2 = edad_bufalos2 +1
-                elif(p.sexo == "F" and femenino_bufalos2 < round(femenino2/4)):
+                elif((p.sexo == "F") and (femenino_bufalos2 < round(femenino2/4))):
                     bufalos.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Bufalos"
@@ -326,14 +326,14 @@ def teams(request):
                     femenino_bufalos2 = femenino_bufalos2 +1
                     edad_bufalos2 = edad_bufalos2 +1
             elif((int(p.edad) >= 25 and int(p.edad) <= 32) and (int(edad_bufalos3) <= round((edad3/4)))):
-                if(p.sexo == "M" and masculino_bufalos3 < round(masculino3/4)):
+                if((p.sexo == "M") and (masculino_bufalos3 < round(masculino3/4))):
                     bufalos.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Bufalos"
                     datos.save()
                     masculino_bufalos3 = masculino_bufalos3 +1
                     edad_bufalos3 = edad_bufalos3 +1
-                elif(p.sexo == "F" and femenino_bufalos3 < round(femenino3/4)):
+                elif((p.sexo == "F") and (femenino_bufalos3 < round(femenino3/4))):
                     bufalos.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Bufalos"
@@ -341,14 +341,14 @@ def teams(request):
                     femenino_bufalos3 = femenino_bufalos3 +1
                     edad_bufalos3 = edad_bufalos3 +1
             elif((int(p.edad) >= 33 and int(p.edad) <= 40) and (int(edad_bufalos4) <= round((edad4/4)))):
-                if(p.sexo == "M" and masculino_bufalos4 < round(masculino4/4)):
+                if((p.sexo == "M") and (masculino_bufalos4 < round(masculino4/4))):
                     bufalos.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Bufalos"
                     datos.save()
                     masculino_bufalos4 = masculino_bufalos4 +1
                     edad_bufalos4 = edad_bufalos4 +1
-                elif(p.sexo == "F" and femenino_bufalos4 < round(femenino4/4)):
+                elif((p.sexo == "F") and (femenino_bufalos4 < round(femenino4/4))):
                     bufalos.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Bufalos"
@@ -361,14 +361,14 @@ def teams(request):
                 datos.save()
         elif((len(aguilas) <= division) and (len(aguilas) <= len(ovejas) and len(aguilas) <= len(bufalos) and len(aguilas) <= len(leones)) ):
             if((int(p.edad) >= 12 and int(p.edad) <= 17) and (int(edad_aguilas1) <= round((edad1/4)))):
-                if(p.sexo == "M" and masculino_aguilas1 < round(masculino1/4)):
+                if((p.sexo == "M") and (masculino_aguilas1 < round(masculino1/4))):
                     aguilas.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Aguilas"
                     datos.save()
                     masculino_aguilas1 = masculino_aguilas1 +1
                     edad_aguilas1 = edad_aguilas1 +1
-                elif(p.sexo == "F" and femenino_aguilas1 < round(femenino1/4)):
+                elif((p.sexo == "F") and (femenino_aguilas1 < round(femenino1/4))):
                     aguilas.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Aguilas"
@@ -376,14 +376,14 @@ def teams(request):
                     femenino_aguilas1 = femenino_aguilas1 +1
                     edad_aguilas1 = edad_aguilas1 +1
             elif((int(p.edad) >= 18 and int(p.edad) <= 24) and (int(edad_aguilas2) <= round((edad2/4)))):
-                if(p.sexo == "M" and masculino_aguilas2 < round(masculino2/4)):
+                if((p.sexo == "M") and (masculino_aguilas2 < round(masculino2/4))):
                     aguilas.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Aguilas"
                     datos.save()
                     masculino_aguilas2 = masculino_aguilas2 +1
                     edad_aguilas2 = edad_aguilas2 +1
-                elif(p.sexo == "F" and femenino_aguilas2 < round(femenino2/4)):
+                elif((p.sexo == "F") and (femenino_aguilas2 < round(femenino2/4))):
                     aguilas.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Aguilas"
@@ -391,14 +391,14 @@ def teams(request):
                     femenino_aguilas2 = femenino_aguilas2 +1
                     edad_aguilas2 = edad_aguilas2 +1
             elif((int(p.edad) >= 25 and int(p.edad) <= 32) and (int(edad_aguilas3) <= round((edad3/4)))):
-                if(p.sexo == "M" and masculino_aguilas3 < round(masculino3/4)):
+                if((p.sexo == "M") and (masculino_aguilas3 < round(masculino3/4))):
                     aguilas.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Aguilas"
                     datos.save()
                     masculino_aguilas3 = masculino_aguilas3 +1
                     edad_aguilas3 = edad_aguilas3 +1
-                elif(p.sexo == "F" and femenino_aguilas3 < round(femenino3/4)):
+                elif((p.sexo == "F") and (femenino_aguilas3 < round(femenino3/4))):
                     aguilas.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Aguilas"
@@ -406,14 +406,14 @@ def teams(request):
                     femenino_aguilas3 = femenino_aguilas3 +1
                     edad_aguilas3 = edad_aguilas3 +1
             elif((int(p.edad) >= 33 and int(p.edad) <= 40) and (int(edad_aguilas4) <= round((edad4/4)))):
-                if(p.sexo == "M" and masculino_aguilas4 < round(masculino4/4)):
+                if((p.sexo == "M") and (masculino_aguilas4 < round(masculino4/4))):
                     aguilas.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Aguilas"
                     datos.save()
                     masculino_aguilas4 = masculino_aguilas4 +1
                     edad_aguilas4 = edad_aguilas4 +1
-                elif(p.sexo == "F" and femenino_aguilas4 < round(femenino4/4)):
+                elif((p.sexo == "F") and (femenino_aguilas4 < round(femenino4/4))):
                     aguilas.append(p.id)
                     datos = formulario.objects.get(id=p.id)
                     datos.team = "Aguilas"
