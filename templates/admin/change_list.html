@@ -1,7 +1,46 @@
 {% extends "admin/base_site.html" %}
 {% load i18n admin_urls admin_static admin_list %}
+{% load humanize %}
 
 {% block extrastyle %}
+    <style>
+      .bar-chart {
+        display: flex;
+        justify-content: space-around;
+        height: 160px;
+        padding-top: 60px;
+        overflow: hidden;
+      }
+      .bar-chart .bar {
+          flex: 100%;
+          align-self: flex-end;
+          margin-right: 2px;
+          position: relative;
+          background-color: #79aec8;
+      }
+      .bar-chart .bar:last-child {
+          margin: 0;
+      }
+      .bar-chart .bar:hover {
+          background-color: #417690;
+      }
+      .bar-chart .bar .bar-tooltip {
+          position: relative;
+          z-index: 999;
+      }
+      .bar-chart .bar .bar-tooltip {
+          position: absolute;
+          top: -60px;
+          left: 50%;
+          transform: translateX(-50%);
+          text-align: center;
+          font-weight: bold;
+          opacity: 0;
+      }
+      .bar-chart .bar:hover .bar-tooltip {
+          opacity: 1;
+      }
+    </style>
   {{ block.super }}
   <link rel="stylesheet" type="text/css" href="{% static "admin/css/changelists.css" %}" />
   {% if cl.formset %}
@@ -47,11 +86,15 @@
 {% block coltype %}flex{% endblock %}
 
 {% block content %}
+
   <div id="content-main">
     {% block object-tools %}
       {% if has_add_permission %}
         <ul class="object-tools">
           {% block object-tools-items %}
+            <li>
+              <a href="/teams"> Generar Teams </a>
+            </li>
             <li>
               {% url cl.opts|admin_urlname:'add' as add_url %}
               <a href="{% add_preserved_filters add_url is_popup to_field %}" class="addlink">
@@ -71,6 +114,19 @@
     <div class="module{% if cl.has_filters %} filtered{% endif %}" id="changelist">
       {% block search %}{% search_form cl %}{% endblock %}
       {% block date_hierarchy %}{% date_hierarchy cl %}{% endblock %}
+
+
+
+      {% if opts.model_name == 'formulario' %}
+          <p>GRAFICA {{ results }}</p>
+        {% endif %}
+
+
+        
+
+
+
+
 
       {% block filters %}
         {% if cl.has_filters %}
@@ -96,3 +152,4 @@
     </div>
   </div>
 {% endblock %}
+
