@@ -7,7 +7,7 @@ from django.conf.urls import handler404
 #handler404 = mi_error_404
 
 urlpatterns = [
-    url(r'^$',  views.encuesta),
+    url(r'^$',  views.inscripciones),
     url(r'^encuesta/$',  views.encuesta),
     url(r'^success/(?P<id>.*)$', views.success, name='success'),
     url(r'^teams/$', views.teams, name='teams'),
