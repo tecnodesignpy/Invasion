@@ -31,6 +31,8 @@ from random import shuffle
 from django.conf import settings
 
 # Create your views here.
+def encuesta(request):
+    return render(request, 'encuesta.html')
 
 @csrf_exempt
 def inscripciones(request):

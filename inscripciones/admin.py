@@ -45,6 +45,7 @@ class FormularioAdmin(ExportMixin, admin.ModelAdmin):
         print(obj.count)
         return obj.count 
 
+
 def _register(model, admin_class):
     admin.site.register(model, admin_class)
 

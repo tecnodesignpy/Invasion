@@ -7,7 +7,8 @@ from django.conf.urls import handler404
 #handler404 = mi_error_404
 
 urlpatterns = [
-    url(r'^$',  views.inscripciones),
+    url(r'^$',  views.encuesta),
+    url(r'^encuesta/$',  views.encuesta),
     url(r'^success/(?P<id>.*)$', views.success, name='success'),
     url(r'^teams/$', views.teams, name='teams'),
     url(r'^pdf/(?P<id>.*)$', PDF.as_view(), name='pdf'),
