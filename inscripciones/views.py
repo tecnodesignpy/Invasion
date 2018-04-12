@@ -34,6 +34,9 @@ from django.conf import settings
 def encuesta(request):
     return render(request, 'encuesta.html')
 
+def playlist(request):
+    return render(request, 'playlist.html')
+
 @csrf_exempt
 def inscripciones(request):
     if request.method == "POST":

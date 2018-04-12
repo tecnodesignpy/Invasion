@@ -9,6 +9,7 @@ from django.conf.urls import handler404
 urlpatterns = [
     url(r'^$',  views.inscripciones),
     url(r'^encuesta/$',  views.encuesta),
+    url(r'^playlist/$',  views.playlist),
     url(r'^success/(?P<id>.*)$', views.success, name='success'),
     url(r'^teams/$', views.teams, name='teams'),
     url(r'^pdf/(?P<id>.*)$', PDF.as_view(), name='pdf'),
