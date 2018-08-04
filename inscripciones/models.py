@@ -103,8 +103,8 @@ class logrado(models.Model):
         return str(self.lider) 
 
     def save(self, *args, **kwargs):
-            similars = logrado.objects.filter(mes=self.mes)
-            created = logrado.objects.filter(mes=self.mes).count()
+            similars = logrado.objects.filter(mes=self.mes, lider=self.lider)
+            created = logrado.objects.filter(mes=self.mes, lider=self.lider).count()
             if created != 0:
                 print ('exist')
                 similars.delete()
