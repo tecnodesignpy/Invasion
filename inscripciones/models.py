@@ -64,5 +64,55 @@ class formulario(models.Model):
         return str(self.id) 
 
 
+class lideres(models.Model):
+    nombres = models.CharField(max_length=200, blank='true', null='true',)
+    ci = models.CharField(max_length=200, blank='true', null='true',)
+    lider = models.CharField(max_length=200, blank='true', null='true',)
+    discipulos = models.CharField(max_length=200, blank='true', null='true',)
+    ganar = models.CharField(max_length=200, blank='true', null='true',)
+    consolidar_agua = models.CharField(max_length=200, blank='true', null='true',)
+    consolidar_espiritu = models.CharField(max_length=200, blank='true', null='true',)
+    consolidar_seminario = models.CharField(max_length=200, blank='true', null='true',)
+    discipular_caminando = models.CharField(max_length=200, blank='true', null='true',)
+    discipular_escuela = models.CharField(max_length=200, blank='true', null='true',)
+    discipular_imparticion = models.CharField(max_length=200, blank='true', null='true',)
+    discipular_vocacional = models.CharField(max_length=200, blank='true', null='true',)
+    multiplicar = models.CharField(max_length=200, blank='true', null='true',)
+    linea = models.CharField(max_length=200, blank='true', null='true',)
+    
+    def __str__(self):
+        return str(self.nombres) 
+
+
+class logrado(models.Model):
+    lider = models.ForeignKey(lideres, on_delete=models.CASCADE)
+    mes = models.CharField(max_length=100, blank='true', null='true',)
+    discipulos = models.CharField(max_length=200, blank='true', null='true',)
+    ganar = models.CharField(max_length=200, blank='true', null='true',)
+    consolidar_agua = models.CharField(max_length=200, blank='true', null='true',)
+    consolidar_espiritu = models.CharField(max_length=200, blank='true', null='true',)
+    consolidar_seminario = models.CharField(max_length=200, blank='true', null='true',)
+    discipular_caminando = models.CharField(max_length=200, blank='true', null='true',)
+    discipular_escuela = models.CharField(max_length=200, blank='true', null='true',)
+    discipular_imparticion = models.CharField(max_length=200, blank='true', null='true',)
+    discipular_vocacional = models.CharField(max_length=200, blank='true', null='true',)
+    multiplicar = models.CharField(max_length=200, blank='true', null='true',)
+    linea = models.CharField(max_length=200, blank='true', null='true',)
+    
+    def __str__(self):
+        return str(self.lider) 
+
+    def save(self, *args, **kwargs):
+            similars = logrado.objects.filter(mes=self.mes)
+            created = logrado.objects.filter(mes=self.mes).count()
+            if created != 0:
+                print ('exist')
+                similars.delete()
+                super(logrado, self).save(*args, **kwargs)
+            else:
+                super(logrado, self).save(*args, **kwargs)
+
+
+
 
 

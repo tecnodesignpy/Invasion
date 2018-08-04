@@ -34,6 +34,58 @@ from django.conf import settings
 def encuesta(request):
     return render(request, 'encuesta.html')
 
+def index(request):
+    mensaje = ''
+    if request.method == "POST":
+        cedula = request.POST.get("cedula")
+        try:
+            lider = lideres.objects.get(ci=cedula)
+        except:
+            lider = 0
+        if(lider != 0):
+            return redirect("/lideres/"+cedula)
+        else:
+            mensaje = "No hemos encontrado tus datos en el sistema"
+    return render(request,'index.html',{'mensaje':mensaje})
+
+def lideres_form(request,cedula):
+        lider = lideres.objects.get(ci=cedula)
+        today = datetime.today()
+        mes = today.month
+        print(lider.id)
+        print(mes)
+        try:
+            logro = logrado.objects.get(lider=lider, mes=mes)
+            print("LOGRADO")
+        except:
+            logro = None
+            print("NO LOGRADO")
+        if request.method == "POST":
+            discipulos              = request.POST.get("ldiscipulos")
+            ganar                   = request.POST.get("lganar")
+            consolidar_agua         = request.POST.get("lconsolidar_agua")
+            consolidar_espiritu     = request.POST.get("lconsolidar_espiritu")
+            consolidar_seminario    = request.POST.get("lconsolidar_seminario")
+            discipular_caminando    = request.POST.get("ldiscipular_caminando")
+            discipular_escuela      = request.POST.get("ldiscipular_escuela")
+            discipular_imparticion  = request.POST.get("ldiscipular_imparticion")
+            discipular_vocacional   = request.POST.get("ldiscipular_vocacional")
+            multiplicar             = request.POST.get("lmultiplicar")
+            print("DISCIPULOS "+str(discipulos))
+            logrado.objects.create(lider=lider, mes=mes, discipulos=discipulos, ganar=ganar, consolidar_agua=consolidar_agua,
+                                    consolidar_espiritu=consolidar_espiritu, consolidar_seminario=consolidar_seminario,
+                                    discipular_caminando=discipular_caminando, discipular_escuela=discipular_escuela,
+                                    discipular_imparticion=discipular_imparticion, discipular_vocacional=discipular_vocacional,
+                                    multiplicar=multiplicar, linea=lider.linea)
+            return redirect('inscripcion:successlideres')
+        if(logro == None):
+            return render(request, 'lideres.html',{'lider':lider})
+        else:
+            return render(request, 'lideres.html',{'lider':lider,'logrado':logro})
+
+def successlideres(request):
+    return render(request, 'success_lideres.html')
+
 def playlist(request):
     return render(request, 'playlist.html')
 

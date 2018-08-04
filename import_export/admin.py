@@ -59,6 +59,7 @@ if isinstance(TMP_STORAGE_CLASS, six.string_types):
 #: used or not is depending on their implementation in the tablib library.
 DEFAULT_FORMATS = (
     base_formats.XLS,
+    base_formats.XLSX,
 )
 
 

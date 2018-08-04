@@ -1,0 +1,237 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block extraheaders %}
+	<style type="text/css">
+		body, html {
+		  height: 100% !important;
+		}
+		.content{
+			height: 100%;
+		}
+	</style>
+{% endblock %}
+{% block content %}
+    <nav style="top: 0; width: 100%; z-index: 100; position: fixed;">
+        <div class="row">
+        	<div class="col-xs-12 text-center" style="background-color: #e0e0e0;">
+        		<p style="color: black; padding: 15px">{{ lider.nombres }}</p>
+        	</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-xs-6 text-center" style="border: 1px solid white; padding: 10px; background-color: #A9A1A1;">
+                <p style="font-size: 20px; font-weight: bold; color: black">META<br> 2017</p>
+            </div>
+            <div class="col-md-6 col-xs-6 text-center" style="border: 1px solid white; padding: 10px; background-color: #A9A1A1;">
+                <p style="font-size: 20px; font-weight: bold; color: black">LOGRADO <br> <span style="font-size: 12px;">HASTA JULIO 2018</span></p>
+            </div>
+        </div>
+    </nav>
+<form id="formulario" method="POST"> {% csrf_token %}
+	<div class="row" style="margin-top: 145px;">
+		<div class="col-xs-12 text-center" style="padding: 10px; background-color: #719988;">
+			<p style="font-size: 20px; font-weight: bold; color: black">Discípulos en Célula</p>
+		</div>
+	</div>
+	<div class="row" style="background-color: #719988; padding: 10px">
+		<div class="col-xs-6 text-center">
+			<p style="color:black;">Cantidad</p>
+			<p style="font-size: 20px;">{{ lider.discipulos }}</p>
+		</div>
+		<div class="col-xs-6 text-center">
+			<p style="color:black;">Cantidad </p>
+			<input required type="number" name="ldiscipulos" value="{{ logrado.discipulos }}">
+		</div>
+	</div>
+	<!-- GANAR -->
+	<div class="row" style="background-color: #F8D169; padding: 10px 0px 0px ">
+		<div class="col-xs-12 text-center" style="padding: 10px; background-color: #F8D169;">
+			<p style="font-size: 20px; font-weight: bold; color: black">GANAR</p>
+		</div>
+	</div>
+	<div class="row" style="background-color: #F8D169">
+		<div class="col-xs-12 text-center">
+			<p style="font-weight: bold; font-style: italic;">Nuevos miembros en mi célula</p>
+		</div>
+	</div>
+	<div class="row" style="background-color: #F8D169; padding: 0px 10px 10px">
+		<div class="col-xs-6 text-center">
+			<p>Cantidad por fé</p>
+			<p style="font-size: 20px;">{{ lider.ganar }}</p>
+		</div>
+		<div class="col-xs-6 text-center">
+			<p>Cantidad lograda</p>
+			<input required type="number" name="lganar" value="{{ logrado.ganar }}">
+		</div>
+	</div>
+	<!-- FIN GANAR -->
+	<!-- CONSOLIDAR -->
+	<div class="row" style="background-color: #E98167; padding: 10px 0px 0px">
+		<div class="col-xs-12 text-center" style="padding: 10px; background-color: #E98167;">
+			<p style="font-size: 20px; font-weight: bold; color: black">CONSOLIDAR</p>
+		</div>
+	</div>
+	<div class="row" style="background-color: #E98167">
+		<div class="col-xs-12 text-center">
+			<p style="font-weight: bold; font-style: italic;">Bautismo en Agua</p>
+		</div>
+	</div>
+	<div class="row" style="background-color: #E98167; padding: 0px 10px 10px">
+		<div class="col-xs-6 text-center">
+			<p>Cantidad</p>
+			<p style="font-size: 20px;">{{ lider.consolidar_agua }}</p>
+		</div>
+		<div class="col-xs-6 text-center">
+			<p>Cantidad</p>
+			<input required type="number" name="lconsolidar_agua" value="{{ logrado.consolidar_agua }}">
+		</div>
+	</div>
+	<div class="row" style="background-color: #E98167; padding: 0px 10px 10px">
+		<div class="col-xs-12 text-center">
+			<p style="font-weight: bold; font-style: italic;">Bautismo en el Espíritu Santo</p>
+		</div>
+	</div>
+	<div class="row" style="background-color: #E98167; padding: 0px 10px 10px">
+		<div class="col-xs-6 text-center">
+			<p>Cantidad</p>
+			<p style="font-size: 20px;">{{ lider.consolidar_espiritu }}</p>
+		</div>
+		<div class="col-xs-6 text-center">
+			<p>Cantidad</p>
+			<input required type="number" name="lconsolidar_espiritu" value="{{ logrado.consolidar_espiritu }}">
+		</div>
+	</div>
+	<div class="row" style="background-color: #E98167; padding: 0px 10px 10px">
+		<div class="col-xs-12 text-center">
+			<p style="font-weight: bold; font-style: italic;">Seminario de Sanidad</p>
+		</div>
+	</div>
+	<div class="row" style="background-color: #E98167; padding: 0px 10px 10px">
+		<div class="col-xs-6 text-center">
+			<p>Cantidad</p>
+			<p style="font-size: 20px;">{{ lider.consolidar_seminario }}</p>
+		</div>
+		<div class="col-xs-6 text-center">
+			<p>Cantidad</p>
+			<input required type="number" name="lconsolidar_seminario"  value="{{ logrado.consolidar_seminario }}">
+		</div>
+	</div>
+	<!-- FIN CONSOLIDAR -->
+	<!-- DISCIPULAR -->
+	<div class="row" style="background-color: #93A750; padding: 10px 0px 0px">
+		<div class="col-xs-12 text-center" style="padding: 10px; background-color: #93A750;">
+			<p style="font-size: 20px; font-weight: bold; color: black">DISCIPULAR</p>
+		</div>
+	</div>
+	<div class="row" style="background-color: #93A750">
+		<div class="col-xs-12 text-center">
+			<p style="font-weight: bold; font-style: italic;">Escuela caminando con Dios</p>
+		</div>
+	</div>
+	<div class="row" style="background-color: #93A750; padding: 0px 10px 10px">
+		<div class="col-xs-6 text-center">
+			<p>Cantidad</p>
+			<p style="font-size: 20px;">{{ lider.discipular_caminando }}</p>
+		</div>
+		<div class="col-xs-6 text-center">
+			<p>Cantidad</p>
+			<input required type="number" name="ldiscipular_caminando"  value="{{ logrado.discipular_caminando }}">
+		</div>
+	</div>
+	<div class="row" style="background-color: #93A750; padding: 0px 10px 10px">
+		<div class="col-xs-12 text-center">
+			<p style="font-weight: bold; font-style: italic;">Escuela de Líderes</p>
+		</div>
+	</div>
+	<div class="row" style="background-color: #93A750; padding: 0px 10px 10px">
+		<div class="col-xs-6 text-center">
+			<p>Cantidad</p>
+			<p style="font-size: 20px;">{{ lider.discipular_escuela }}</p>
+		</div>
+		<div class="col-xs-6 text-center">
+			<p>Cantidad</p>
+			<input required type="number" name="ldiscipular_escuela" value="{{ logrado.discipular_escuela }}">
+		</div>
+	</div>
+	<div class="row" style="background-color: #93A750; padding: 0px 10px 10px">
+		<div class="col-xs-12 text-center">
+			<p style="font-weight: bold; font-style: italic;">Seminario de Impartición</p>
+		</div>
+	</div>
+	<div class="row" style="background-color: #93A750; padding: 0px 10px 10px">
+		<div class="col-xs-6 text-center">
+			<p>Cantidad</p>
+			<p style="font-size: 20px;">{{ lider.discipular_imparticion }}</p>
+		</div>
+		<div class="col-xs-6 text-center">
+			<p>Cantidad</p>
+			<input required type="number" name="ldiscipular_imparticion"  value="{{ logrado.discipular_imparticion }}">
+		</div>
+	</div>
+	<div class="row" style="background-color: #93A750; padding: 0px 10px 10px">
+		<div class="col-xs-12 text-center">
+			<p style="font-weight: bold; font-style: italic;">Escuela Vocacional</p>
+		</div>
+	</div>
+	<div class="row" style="background-color: #93A750; padding: 0px 10px 10px">
+		<div class="col-xs-6 text-center">
+			<p>Cantidad</p>
+			<p style="font-size: 20px;">{{ lider.discipular_vocacional }}</p>
+		</div>
+		<div class="col-xs-6 text-center">
+			<p>Cantidad</p>
+			<input required type="number" name="ldiscipular_vocacional"  value="{{ logrado.discipular_vocacional }}">
+		</div>
+	</div>
+	<!-- FIN DISCIPULAR -->
+	<!-- MULTIPLICAR -->
+	<div class="row" style="background-color: #5A4878; padding: 10px 0px 0px ">
+		<div class="col-xs-12 text-center" style="padding: 10px; background-color: #5A4878;">
+			<p style="font-size: 20px; font-weight: bold; color: white">MULTIPLICAR</p>
+		</div>
+	</div>
+	<div class="row" style="background-color: #5A4878">
+		<div class="col-xs-12 text-center">
+			<p style="font-weight: bold; font-style: italic; color: white">Células Nuevas</p>
+		</div>
+	</div>
+	<div class="row" style="background-color: #5A4878; padding: 0px 10px 10px">
+		<div class="col-xs-6 text-center">
+			<p style="color: white">Cantidad</p>
+			<p style="font-size: 20px;color: white">{{ lider.multiplicar }}</p>
+		</div>
+		<div class="col-xs-6 text-center">
+			<p style="color: white">Cantidad</p>
+			<input type="number" name="lmultiplicar" required="true"  value="{{ logrado.multiplicar }}">
+		</div>
+	</div>
+	<!-- FIN MULTIPLICAR -->
+</form>
+
+          <a class="btn btn-default btn-block pull-center" style="background-color: #002B4B; font-weight :lighter; margin: 30px 10%;" onclick="validar()">GUARDAR </a>
+
+{% endblock %}
+
+
+{% block extrascripts %}
+    	<script src="https://unpkg.com/sweetalert2@7.21.1/dist/sweetalert2.all.js"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'sweetalert-master/dist/sweetalert.css' %}">
+        <script type="text/javascript">
+        	function validar(){
+             	swal({  title: "", 
+                        text: "Seguro que deseas enviar el formulario?", 
+                        type:"info",
+                        confirmButtonColor: "#002B4B",
+                        closeOnConfirm: false,
+                        confirmButtonText: "Enviar",
+			            showCancelButton: true,     
+		            	cancelButtonText: "Cancelar", 
+					  	allowOutsideClick: () => !swal.isLoading(),
+					  	preConfirm: () => {
+					  		console.log("enviar");
+					  		document.getElementById("formulario").submit();
+					  	}
+              	});
+        	}
+        </script>
+{% endblock %}

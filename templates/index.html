@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block extraheaders %}
+	<style type="text/css">
+		body, html {
+		  height: 100% !important;
+		}
+		.content{
+			height: 100%;
+		}
+	</style>
+{% endblock %}
+{% block content %}
+
+<div style="padding: 40% 20px;" class="text-center">
+	<h1>Línea Mora</h1>
+	<h3>Escribe tu Numero de Cedula (sin puntos).</h3>
+	<p style="color:red">{{mensaje}}</p>
+	<form id="formulario" method="POST"> 
+		{% csrf_token %}
+		<input id="id_cedula" type="number" name="cedula" placeholder="Ej: 2987367">
+	</form>
+	<center>
+		<button onclick="enviar()" style="margin-top: 30px;" class="btn btn-default btn-block pull-center">Recuperar</button>
+	</center>
+</div>
+
+{% endblock %}
+
+{% block extrascripts %}
+    <script src="{% static 'sweetalert-master/dist/sweetalert.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'sweetalert-master/dist/sweetalert.css' %}">
+	<script type="text/javascript">
+		function enviar(){
+			var cedula = document.getElementById("id_cedula").value;
+			if(cedula != 0 && cedula != ''){
+				document.getElementById("formulario").submit();
+			}else{
+	            swal({  title: "Oops..!", 
+	                         text: "Debes completar el campo con un numero de cedula válido.", 
+	                         type:"error",
+	                         html: true,
+	                         confirmButtonColor: "#002B4B",
+	                         closeOnConfirm: false
+	             });
+			}
+		}
+	</script>
+{% endblock %}

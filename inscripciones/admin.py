@@ -45,8 +45,24 @@ class FormularioAdmin(ExportMixin, admin.ModelAdmin):
         print(obj.count)
         return obj.count 
 
+class LideresResource(resources.ModelResource):
+
+    class Meta:
+        model = models.lideres
+
+class LideresAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = (u'id','nombres',)
+    ordering = ('nombres',)
+    save_on_top = True
+    resource_class = LideresResource
+
+
+class LogradoAdmin(admin.ModelAdmin):
+    list_display = (u'id','lider',)
 
 def _register(model, admin_class):
     admin.site.register(model, admin_class)
 
 _register(models.formulario,FormularioAdmin)
+_register(models.lideres,LideresAdmin)
+_register(models.logrado,LogradoAdmin)
