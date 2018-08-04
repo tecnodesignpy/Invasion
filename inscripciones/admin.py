@@ -63,6 +63,7 @@ class LogradoResource(resources.ModelResource):
 
 class LogradoAdmin(ExportMixin, admin.ModelAdmin):
     list_display = (u'id','lider',)
+    show_full_result_count = True
     resource_class = LogradoResource
 
 def _register(model, admin_class):
