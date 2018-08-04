@@ -56,9 +56,14 @@ class LideresAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     save_on_top = True
     resource_class = LideresResource
 
+class LogradoResource(resources.ModelResource):
 
-class LogradoAdmin(admin.ModelAdmin):
+    class Meta:
+        model = models.logrado
+
+class LogradoAdmin(ExportMixin, admin.ModelAdmin):
     list_display = (u'id','lider',)
+    resource_class = LogradoResource
 
 def _register(model, admin_class):
     admin.site.register(model, admin_class)
