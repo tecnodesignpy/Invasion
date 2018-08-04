@@ -33,7 +33,7 @@ from django.conf import settings
 # Create your views here.
 def encuesta(request):
     return render(request, 'encuesta.html')
-
+@csrf_exempt
 def index(request):
     mensaje = ''
     if request.method == "POST":
@@ -47,7 +47,7 @@ def index(request):
         else:
             mensaje = "No hemos encontrado tus datos en el sistema"
     return render(request,'index.html',{'mensaje':mensaje})
-
+@csrf_exempt
 def lideres_form(request,cedula):
         lider = lideres.objects.get(ci=cedula)
         today = datetime.today()
