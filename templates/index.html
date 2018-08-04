@@ -15,14 +15,14 @@
 
 <div style="padding: 40% 20px;" class="text-center">
 	<h1>Línea Mora</h1>
-	<h3>Escribe tu Numero de Cedula (sin puntos).</h3>
+	<h3>Escribí tu Número de Cédula (sin puntos).</h3>
 	<p style="color:red">{{mensaje}}</p>
 	<form id="formulario" method="POST"> 
 		{% csrf_token %}
 		<input id="id_cedula" type="number" name="cedula" placeholder="Ej: 2987367">
 	</form>
 	<center>
-		<button onclick="enviar()" style="margin-top: 30px;" class="btn btn-default btn-block pull-center">Recuperar</button>
+		<button onclick="enviar()" style="margin-top: 30px;" class="btn btn-default btn-block pull-center">Ingresar</button>
 	</center>
 </div>
 
