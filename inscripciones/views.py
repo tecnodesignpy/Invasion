@@ -39,7 +39,7 @@ def index(request):
     if request.method == "POST":
         cedula = request.POST.get("cedula")
         try:
-            lider = lideres.objects.get(ci=cedula)
+            lider = lideres.objects.filter(ci=cedula)
         except:
             lider = 0
         if(lider != 0):
@@ -47,19 +47,27 @@ def index(request):
         else:
             mensaje = "No hemos encontrado tus datos en el sistema"
     return render(request,'index.html',{'mensaje':mensaje})
+
+def lideres_menu(request, cedula):
+    ''' Obtenemos todas las celulas del lider, en el caso que tenga dos o mas, renderizamos todas. '''
+    celulas = lideres.objects.filter(ci=cedula)
+    return render(request,'lideres_menu.html',{'celulas':celulas})
+
 @csrf_exempt
-def lideres_form(request,cedula):
-        lider = lideres.objects.get(ci=cedula)
-        today = datetime.today()
-        mes = today.month
-        print(lider.id)
-        print(mes)
+def lideres_form(request, cedula, id_celula):
+        lider   = lideres.objects.get(id=id_celula, ci=cedula)
         try:
-            logro = logrado.objects.get(lider=lider, mes=mes)
-            print("LOGRADO")
+            logrado_mes_anterior = logrado.objects.get(lider=lider, mes=8)
+        except:
+            logrado_mes_anterior = None
+        today   = datetime.today()
+        mes     = today.month
+        dia     = today.day
+        # Si ya paso el 20 de cada mes, debe traer los datos del mes siguiente y mes anterior.
+        try:
+            logro = logrado.objects.get(lider=lider, mes=9)
         except:
             logro = None
-            print("NO LOGRADO")
         if request.method == "POST":
             discipulos              = request.POST.get("ldiscipulos")
             ganar                   = request.POST.get("lganar")
@@ -72,16 +80,16 @@ def lideres_form(request,cedula):
             discipular_vocacional   = request.POST.get("ldiscipular_vocacional")
             multiplicar             = request.POST.get("lmultiplicar")
             print("DISCIPULOS "+str(discipulos))
-            logrado.objects.create(lider=lider, mes=mes, discipulos=discipulos, ganar=ganar, consolidar_agua=consolidar_agua,
+            logrado.objects.create(lider=lider, mes=9, discipulos=discipulos, ganar=ganar, consolidar_agua=consolidar_agua,
                                     consolidar_espiritu=consolidar_espiritu, consolidar_seminario=consolidar_seminario,
                                     discipular_caminando=discipular_caminando, discipular_escuela=discipular_escuela,
                                     discipular_imparticion=discipular_imparticion, discipular_vocacional=discipular_vocacional,
                                     multiplicar=multiplicar, linea=lider.linea)
             return redirect('inscripcion:successlideres')
         if(logro == None):
-            return render(request, 'lideres.html',{'lider':lider})
+            return render(request, 'lideres.html',{'lider':lider,'logrado_mes_anterior':logrado_mes_anterior})
         else:
-            return render(request, 'lideres.html',{'lider':lider,'logrado':logro})
+            return render(request, 'lideres.html',{'lider':lider,'logrado':logro,'logrado_mes_anterior':logrado_mes_anterior})
 
 def successlideres(request):
     return render(request, 'success_lideres.html')

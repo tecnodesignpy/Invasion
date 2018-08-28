@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block extraheaders %}
+	<style type="text/css">
+		body, html {
+		  height: 100% !important;
+		}
+		.content{
+			height: 100%;
+		}
+	</style>
+{% endblock %}
+{% block content %}
+
+<div style="padding: 20% 20px;" class="text-center">
+	<h1>Hola {{ celulas.0.nombres|truncatewords:-1|slice:":-3" }}</h1>
+	<hr>
+	<h3>Listado de Células activas</h3>
+	{% for celula in celulas %}
+		<center>
+			<a href="/celula/{{ celula.ci }}/{{ celula.id }}" style="margin-top: 30px;" class="btn btn-default btn-block pull-center">{{ celula.nombres }}</a>
+		</center>
+	{% endfor %}
+</div>
+
+{% endblock %}
+
+{% block extrascripts %}
+    <script src="{% static 'sweetalert-master/dist/sweetalert.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'sweetalert-master/dist/sweetalert.css' %}">
+	<script type="text/javascript">
+		function enviar(){
+			var cedula = document.getElementById("id_cedula").value;
+			if(cedula != 0 && cedula != ''){
+				document.getElementById("formulario").submit();
+			}else{
+	            swal({  title: "Oops..!", 
+	                         text: "Debes completar el campo con un numero de cedula válido.", 
+	                         type:"error",
+	                         html: true,
+	                         confirmButtonColor: "#002B4B",
+	                         closeOnConfirm: false
+	             });
+			}
+		}
+	</script>
+{% endblock %}

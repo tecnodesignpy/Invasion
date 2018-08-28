@@ -20,10 +20,10 @@
         </div>
         <div class="row">
             <div class="col-md-6 col-xs-6 text-center" style="border: 1px solid white; padding: 10px; background-color: #A9A1A1;">
-                <p style="font-size: 20px; font-weight: bold; color: black">META<br> 2017</p>
+                <p style="font-size: 20px; font-weight: bold; color: black">LOGRADO <br> <span style="font-size: 12px;">HASTA JULIO 2018</p>
             </div>
             <div class="col-md-6 col-xs-6 text-center" style="border: 1px solid white; padding: 10px; background-color: #A9A1A1;">
-                <p style="font-size: 20px; font-weight: bold; color: black">LOGRADO <br> <span style="font-size: 12px;">HASTA JULIO 2018</span></p>
+                <p style="font-size: 20px; font-weight: bold; color: black">LOGRADO <br> <span style="font-size: 12px;">HASTA AGOSTO 2018</span></p>
             </div>
         </div>
     </nav>
@@ -36,7 +36,7 @@
 	<div class="row" style="background-color: #719988; padding: 10px">
 		<div class="col-xs-6 text-center">
 			<p style="color:black;">Cantidad</p>
-			<p style="font-size: 20px;">{{ lider.discipulos }}</p>
+			<p style="font-size: 20px;">{{ logrado_mes_anterior.discipulos | default:'0' }}</p>
 		</div>
 		<div class="col-xs-6 text-center">
 			<p style="color:black;">Cantidad </p>
@@ -57,7 +57,7 @@
 	<div class="row" style="background-color: #F8D169; padding: 0px 10px 10px">
 		<div class="col-xs-6 text-center">
 			<p>Cantidad por fé</p>
-			<p style="font-size: 20px;">{{ lider.ganar }}</p>
+			<p style="font-size: 20px;">{{ logrado_mes_anterior.ganar | default:'0' }}</p>
 		</div>
 		<div class="col-xs-6 text-center">
 			<p>Cantidad lograda</p>
@@ -79,7 +79,7 @@
 	<div class="row" style="background-color: #E98167; padding: 0px 10px 10px">
 		<div class="col-xs-6 text-center">
 			<p>Cantidad</p>
-			<p style="font-size: 20px;">{{ lider.consolidar_agua }}</p>
+			<p style="font-size: 20px;">{{ logrado_mes_anterior.consolidar_agua | default:'0' }}</p>
 		</div>
 		<div class="col-xs-6 text-center">
 			<p>Cantidad</p>
@@ -94,7 +94,7 @@
 	<div class="row" style="background-color: #E98167; padding: 0px 10px 10px">
 		<div class="col-xs-6 text-center">
 			<p>Cantidad</p>
-			<p style="font-size: 20px;">{{ lider.consolidar_espiritu }}</p>
+			<p style="font-size: 20px;">{{ logrado_mes_anterior.consolidar_espiritu | default:'0' }}</p>
 		</div>
 		<div class="col-xs-6 text-center">
 			<p>Cantidad</p>
@@ -109,7 +109,7 @@
 	<div class="row" style="background-color: #E98167; padding: 0px 10px 10px">
 		<div class="col-xs-6 text-center">
 			<p>Cantidad</p>
-			<p style="font-size: 20px;">{{ lider.consolidar_seminario }}</p>
+			<p style="font-size: 20px;">{{ logrado_mes_anterior.consolidar_seminario | default:'0' }}</p>
 		</div>
 		<div class="col-xs-6 text-center">
 			<p>Cantidad</p>
@@ -131,7 +131,7 @@
 	<div class="row" style="background-color: #93A750; padding: 0px 10px 10px">
 		<div class="col-xs-6 text-center">
 			<p>Cantidad</p>
-			<p style="font-size: 20px;">{{ lider.discipular_caminando }}</p>
+			<p style="font-size: 20px;">{{ logrado_mes_anterior.discipular_caminando | default:'0' }}</p>
 		</div>
 		<div class="col-xs-6 text-center">
 			<p>Cantidad</p>
@@ -146,7 +146,7 @@
 	<div class="row" style="background-color: #93A750; padding: 0px 10px 10px">
 		<div class="col-xs-6 text-center">
 			<p>Cantidad</p>
-			<p style="font-size: 20px;">{{ lider.discipular_escuela }}</p>
+			<p style="font-size: 20px;">{{ logrado_mes_anterior.discipular_escuela | default:'0' }}</p>
 		</div>
 		<div class="col-xs-6 text-center">
 			<p>Cantidad</p>
@@ -161,7 +161,7 @@
 	<div class="row" style="background-color: #93A750; padding: 0px 10px 10px">
 		<div class="col-xs-6 text-center">
 			<p>Cantidad</p>
-			<p style="font-size: 20px;">{{ lider.discipular_imparticion }}</p>
+			<p style="font-size: 20px;">{{ logrado_mes_anterior.discipular_imparticion | default:'0' }}</p>
 		</div>
 		<div class="col-xs-6 text-center">
 			<p>Cantidad</p>
@@ -176,7 +176,7 @@
 	<div class="row" style="background-color: #93A750; padding: 0px 10px 10px">
 		<div class="col-xs-6 text-center">
 			<p>Cantidad</p>
-			<p style="font-size: 20px;">{{ lider.discipular_vocacional }}</p>
+			<p style="font-size: 20px;">{{ logrado_mes_anterior.discipular_vocacional | default:'0' }}</p>
 		</div>
 		<div class="col-xs-6 text-center">
 			<p>Cantidad</p>
@@ -198,7 +198,7 @@
 	<div class="row" style="background-color: #5A4878; padding: 0px 10px 10px">
 		<div class="col-xs-6 text-center">
 			<p style="color: white">Cantidad</p>
-			<p style="font-size: 20px;color: white">{{ lider.multiplicar }}</p>
+			<p style="font-size: 20px;color: white">{{ logrado_mes_anterior.multiplicar | default:'0' }}</p>
 		</div>
 		<div class="col-xs-6 text-center">
 			<p style="color: white">Cantidad</p>
