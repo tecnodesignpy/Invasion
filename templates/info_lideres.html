@@ -40,7 +40,7 @@
 			</div>
 		</div>
 		<center>
-			<button type="submit" style="margin-top: 30px;" class="btn btn-default btn-block pull-center">Guardar</button>
+			<button type="submit" style="margin-top: 30px;margin-bottom: 30px;" class="btn btn-default btn-block pull-center">Guardar</button>
 		</center>
 	</form>
 </div>
@@ -106,13 +106,16 @@
 		        content: markerContent,
 		        flat: true
 		    });
+
 		      
-		      marker.addListener( 'dragend', function (event)
+		      map.addListener( 'center_changed', function (event)
 		      {
+		      	 marker.setPosition( map.getCenter());
 		        //escribimos las coordenadas de la posicion actual del marcador dentro del input #coords
-		        console.log(this.getPosition().lat()+","+ this.getPosition().lng());
-		        document.getElementById("id_latitud").value = this.getPosition().lat();
-		        document.getElementById("id_longitud").value = this.getPosition().lng();
+		        //console.log(this.getPosition().lat()+","+ this.getPosition().lng());
+		        console.log(map.getCenter().lat());
+		        document.getElementById("id_latitud").value = map.getCenter().lat();
+		        document.getElementById("id_longitud").value = map.getCenter().lng();
 		      });
 
 		    marker.content.className = 'marker-loaded';

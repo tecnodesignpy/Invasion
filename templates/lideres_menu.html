@@ -16,7 +16,7 @@
 <div style="padding: 20% 20px;" class="text-center">
 	<h1>Hola {{ celulas.0.nombres|truncatewords:-1|slice:":-3" }}</h1>
 	<hr>
-	<h3>Listado de Células activas (Reunión de Lideres)</h3>
+	<h3>Metas - Reunión de Lideres</h3>
 	{% for celula in celulas %}
 		<center>
 			<a href="/celula/{{ celula.ci }}/{{ celula.id }}" style="margin-top: 30px;" class="btn btn-default btn-block pull-center">{{ celula.nombres }}</a>
