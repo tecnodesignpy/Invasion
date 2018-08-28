@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^encuesta/$',  views.encuesta),
     url(r'^lideres/(?P<cedula>.*)$',  views.lideres_menu),
     url(r'^celula/(?P<cedula>.*)/(?P<id_celula>.*)$',  views.lideres_form),
+    url(r'^infocelula/(?P<id_celula>.*)$',  views.lideres_info),
     url(r'^playlist/$',  views.playlist),
     url(r'^success/(?P<id>.*)$', views.success, name='success'),
     url(r'^successlideres/$', views.successlideres, name='successlideres'),

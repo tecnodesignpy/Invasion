@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block extraheaders %}
+	<style type="text/css">
+		body, html {
+		  height: 100% !important;
+		}
+		.content{
+			height: 100%;
+		}
+	</style>
+{% endblock %}
+{% block content %}
+
+<div style="padding: 5% 20px;" class="text-center">
+	<h1>Información de tu célula</h1>
+	<h3>HOLA {{ lider.nombres|truncatewords:-1|slice:":-3"}}</h3>
+	<form method="POST">
+		{% csrf_token %}
+		{{ form.lider }}
+		<div class="row" style="padding: 10px">
+			<div class="col-xs-12 text-left">
+				<p style="color:black;"> Que día tenes tu célula? </p>
+				{{ form.dias }}
+			</div>
+			<div class="col-xs-12 text-left" style="margin-top: 10px;">
+				<p style="color:black;"> Cual es el horario de la célula? </p>
+				{{ form.horario }}
+			</div>
+			<div class="col-xs-12 text-left" style="margin-top: 10px;">
+				<p style="color:black;"> Seguís recibiendo gente? </p>
+				{{ form.recibe_gente }}
+			</div>
+			<div class="col-xs-12 text-left" style="margin-top: 10px;">
+				<p style="color:black;"> Ubicá dentro del mapa el lugar donde tenes tu célula. </p>
+				{{ form.latitud | default:'0' }}
+				{{ form.longitud | default:'0' }}
+				<div id="map-simple" class="map-submit" style="width: 100%; margin-top: 30px;"></div>
+			</div>
+		</div>
+		<center>
+			<button type="submit" style="margin-top: 30px;" class="btn btn-default btn-block pull-center">Guardar</button>
+		</center>
+	</form>
+</div>
+
+{% endblock %}
+
+{% block extrascripts %}
+	<script type="text/javascript"
+        src="http://maps.google.com/maps/api/js?key=AIzaSyAg-BXo7AgcqlpvLaQiKl00yrxAhl6gznE&amp;libraries=places"></script>
+    <script type="text/javascript" src="https://googlemaps.github.io/js-rich-marker/src/richmarker.js"></script>
+	<script type="text/javascript">
+
+	    $(window).load(function () {
+	        if (navigator.geolocation) {
+	          navigator.geolocation.getCurrentPosition(function(position) {
+	            var pos = {
+	              lat: position.coords.latitude,
+	              lng: position.coords.longitude
+	            };
+	            var _latitude = position.coords.latitude;
+	            var _longitude = position.coords.longitude;
+	            console.log(_longitude, _latitude);
+	          var draggableMarker = true;
+	          simpleMap(_latitude, _longitude,draggableMarker);
+	          });
+	        } else {
+	          // Browser doesn't support Geolocation
+
+	          var _latitude = -25.342101312674973;
+	          var _longitude = -57.556251883506775;
+	          var draggableMarker = true;
+	          simpleMap(_latitude, _longitude,draggableMarker);
+	        }
+	    });
+
+		function simpleMap(_latitude, _longitude, draggableMarker) {
+		    console.log(_latitude,_longitude,draggableMarker );
+	        var latitud_bd = '{{ form.latitud.value }}';
+	        var longitud_bd = '{{ form.longitud.value }}';
+	        console.log(latitud_bd);
+	        console.log(longitud_bd);
+	        if(latitud_bd != 'None' && latitud_bd != '' && longitud_bd != 'None' && longitud_bd != ''){
+	        	console.log("Entro");
+	        	var _latitude = latitud_bd;
+	        	var _longitude = longitud_bd;
+		    	console.log(_latitude,_longitude,draggableMarker );
+	        }
+		    var mapCenter = new google.maps.LatLng(_latitude, _longitude);
+		    var mapOptions = {
+		        zoom: 16,
+		        center: mapCenter,
+		        disableDefaultUI: true,
+		        scrollwheel: false,
+		        styles: mapStyles,
+		        panControl: false,
+		        zoomControl: true,
+		        draggable: true
+		    };
+		    var mapElement = document.getElementById('map-simple');
+		    var map = new google.maps.Map(mapElement, mapOptions);
+
+		    // Google map marker content -----------------------------------------------------------------------------------
+
+		    var markerContent = document.createElement('DIV');
+		    markerContent.innerHTML =
+		        '<div class="map-marker">' +
+		        '<div class="icon"></div>' +
+		        '</div>';
+
+		    // Create marker on the map ------------------------------------------------------------------------------------
+
+		    var marker = new RichMarker({
+		        //position: mapCenter,
+		        position: new google.maps.LatLng(_latitude, _longitude),
+		        map: map,
+		        draggable: draggableMarker,
+		        content: markerContent,
+		        flat: true
+		    });
+		      
+		      marker.addListener( 'dragend', function (event)
+		      {
+		        //escribimos las coordenadas de la posicion actual del marcador dentro del input #coords
+		        console.log(this.getPosition().lat()+","+ this.getPosition().lng());
+		        document.getElementById("id_latitud").value = this.getPosition().lat();
+		        document.getElementById("id_longitud").value = this.getPosition().lng();
+		      });
+
+		    marker.content.className = 'marker-loaded';
+		}
+	</script>
+    <script src="{% static 'sweetalert-master/dist/sweetalert.min.js' %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'sweetalert-master/dist/sweetalert.css' %}">
+{% endblock %}

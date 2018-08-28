@@ -1,5 +1,6 @@
 from django.contrib import admin
 from . import models
+from .models import *
 #Para el boton de EXPORTAR
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin, ExportMixin
@@ -12,7 +13,7 @@ from django.core.urlresolvers import reverse
 class FomularioResource(resources.ModelResource):
 
     class Meta:
-        model = models.formulario
+        model = formulario
 
 class FormularioAdmin(ExportMixin, admin.ModelAdmin):
     list_display = (u'id','nombres','apellidos','team','edad','acompanado','nombre_compania','parentesco','pagado','fecha_pagado','observaciones','usuario_pago','account_actions',)
@@ -48,7 +49,7 @@ class FormularioAdmin(ExportMixin, admin.ModelAdmin):
 class LideresResource(resources.ModelResource):
 
     class Meta:
-        model = models.lideres
+        model = lideres
 
 class LideresAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = (u'id','nombres',)
@@ -59,7 +60,10 @@ class LideresAdmin(ImportExportModelAdmin, admin.ModelAdmin):
 class LogradoResource(resources.ModelResource):
 
     class Meta:
-        model = models.logrado
+        model = logrado
+
+class InfoLiderAdmin(admin.ModelAdmin):
+    list_display = (u'id','lider',)
 
 class LogradoAdmin(ExportMixin, admin.ModelAdmin):
     list_display = (u'id','lider',)
@@ -69,6 +73,7 @@ class LogradoAdmin(ExportMixin, admin.ModelAdmin):
 def _register(model, admin_class):
     admin.site.register(model, admin_class)
 
-_register(models.formulario,FormularioAdmin)
-_register(models.lideres,LideresAdmin)
-_register(models.logrado,LogradoAdmin)
+_register(formulario,FormularioAdmin)
+_register(lideres,LideresAdmin)
+_register(info_lideres,InfoLiderAdmin)
+_register(logrado,LogradoAdmin)

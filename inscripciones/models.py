@@ -5,6 +5,7 @@ from randomslugfield import RandomSlugField
 
 GENEROS=(("M","Masculino"),("F","Femenino"))
 SI_NO=(("Si","Si"),("No","No"))
+DIAS=(("1","Domingo"),("2","Lunes"),("3","Martes"),("4","Miercoles"),("5","Jueves"),("6","Viernes"),("7","Sabado"))
 PARENTESCO=(("Esposos","Esposos"),("Novios","Novios"),("Hermanos","Hermanos"),("Primos","Primos"),("Papa/Mama","Papá/Mamá"),("Hijo/Hija","Hijo/Hija"),("Otro","Otro"))
 REMERAS=(("P","P"),("M","M"),("G","G"),("XG","XG"))
 
@@ -83,6 +84,15 @@ class lideres(models.Model):
     def __str__(self):
         return str(self.nombres) 
 
+class info_lideres(models.Model):
+    lider = models.ForeignKey(lideres, on_delete=models.CASCADE)
+    ###
+    recibe_gente    = models.CharField(max_length=20, choices=SI_NO, blank=True, null=True)
+    dias            = models.CharField(max_length=20, choices=DIAS, blank=True, null=True)
+    horario         = models.CharField(max_length=100, blank=True, null=True)
+    latitud         = models.CharField(max_length=200, blank=True, null=True)
+    longitud        = models.CharField(max_length=200, blank=True, null=True)
+    ###
 
 class logrado(models.Model):
     lider = models.ForeignKey(lideres, on_delete=models.CASCADE)
