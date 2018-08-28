@@ -52,7 +52,7 @@ def lideres_menu(request, cedula):
     ''' Obtenemos todas las celulas del lider, en el caso que tenga dos o mas, renderizamos todas. '''
     celulas = lideres.objects.filter(ci=cedula)
     return render(request,'lideres_menu.html',{'celulas':celulas})
-
+@csrf_exempt
 def lideres_info(request, id_celula):
     ''' Obtenemos todas las celulas del lider, en el caso que tenga dos o mas, renderizamos todas. '''
     lid = lideres.objects.get(id=id_celula)
