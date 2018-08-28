@@ -57,20 +57,20 @@ def lideres_info(request, id_celula):
     ''' Obtenemos todas las celulas del lider, en el caso que tenga dos o mas, renderizamos todas. '''
     lid = lideres.objects.get(id=id_celula)
     try:
-        celula  = info_lideres.objects.get(lider=id_celula)
+        celula_save  = info_lideres.objects.get(lider=id_celula)
     except:
         celula  = info_lideres.objects.create(lider=lid)
-        celula.save()
+        celula_save = celula.save()
     if request.method == "POST":
-        form = InfoForm(request.POST,instance=celula)
+        form = InfoForm(request.POST,instance=celula_save)
         if form.is_valid():
             print(form)
             form.save()
             return redirect('/lideres/'+lid.ci)
     else:
-        print("Lider = " + str(celula))
-        form = InfoForm(instance=celula)
-    return render(request,'info_lideres.html',{'celula':celula,'lider':lid,'form':form})
+        print("Lider = " + str(celula_save))
+        form = InfoForm(instance=celula_save)
+    return render(request,'info_lideres.html',{'celula':celula_save,'lider':lid,'form':form})
 
 @csrf_exempt
 def lideres_form(request, cedula, id_celula):
