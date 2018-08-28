@@ -33,7 +33,7 @@ class InfoForm (forms.ModelForm):
         widgets = {
             'id':forms.TextInput(attrs={'style':'display:none'}),
             'lider':forms.TextInput(attrs={'style':'display:none'}),
-            'horario':forms.TextInput(attrs={'type':'number','class':'form-control','placeholder':'Ej.: 18:30'}),
+            'horario':forms.TextInput(attrs={'type':'text','class':'form-control','placeholder':'Ej.: 18:30'}),
             'dias': forms.Select(attrs={'class':'form-control',}),
             'recibe_gente': forms.Select(attrs={'class':'form-control'}),
             'latitud': forms.TextInput(attrs={'class':'form-control', 'style':'display:none;border:transparent;background:transparent'}),
