@@ -16,7 +16,7 @@
 <div style="padding: 5% 20px;" class="text-center">
 	<h1>Información de tu célula</h1>
 	<h3>HOLA {{ lider.nombres|truncatewords:-1|slice:":-3"}}</h3>
-	<form method="POST">
+	<form method="POST" novalidate>
 		{% csrf_token %}
 		{{ form.lider }}
 		<div class="row" style="padding: 10px">
