@@ -58,7 +58,7 @@
                 '<p class="icon" style="padding-top:5px;">{{ result.get_dias_display | slice:":2" | default:'' }}</p>' +
                 '</div>';
 
-              var marker = new RichMarker({
+              var marker = new google.maps.Marker({
                   //position: mapCenter,
                   position: new google.maps.LatLng('{{ result.latitud | default:'0' }}', '{{ result.longitud | default:'0' }}'),
                   map: map,
@@ -68,6 +68,7 @@
               });
 
               newMarkers.push(marker);
+
           {% endfor %}
 
 
@@ -75,7 +76,7 @@
         var markerCluster = new MarkerClusterer(map, newMarkers,
             {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
 
-          marker.content.className = 'marker-loaded';
+          //marker.content.className = 'marker-loaded';
       }
   </script>
 {% endblock %}
