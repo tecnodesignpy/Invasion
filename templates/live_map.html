@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+
+{% block content %}
+  <div id="map-simple" class="map-submit" style="width: 100%; margin-top: 30px; height: 500px;"></div>
+{% endblock %}
+
+
+
+
+{% block extrascripts %}
+
+  <script type="text/javascript" src="{% static 'js/jquery-2.1.0.min.js' %}"></script>
+  <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+  <script type="text/javascript"
+        src="http://maps.google.com/maps/api/js?key=AIzaSyC0Bz4yuEg89NpooiBw0Po1x64d96FtJwU&amp;libraries=places"></script>
+  <script type="text/javascript" src="https://googlemaps.github.io/js-rich-marker/src/richmarker.js"></script>
+  <script type="text/javascript" src="{% static 'js/maps.js' %}"></script>
+
+  <script type="text/javascript">
+
+      $(window).load(function () {
+            // Browser doesn't support Geolocation
+
+            var _latitude = -25.3034805;
+            var _longitude = -57.5546023;
+            var draggableMarker = true;
+            simpleMap(_latitude, _longitude,draggableMarker);
+      });
+
+      function simpleMap(_latitude, _longitude, draggableMarker) {
+          console.log(_latitude,_longitude,draggableMarker );
+          var mapCenter = new google.maps.LatLng(_latitude, _longitude);
+          var mapOptions = {
+              zoom: 12,
+              center: mapCenter,
+              disableDefaultUI: true,
+              scrollwheel: false,
+              //styles: mapStyles,
+              panControl: false,
+              zoomControl: true,
+              draggable: true
+          };
+          var mapElement = document.getElementById('map-simple');
+          var map = new google.maps.Map(mapElement, mapOptions);
+
+          // Create marker on the map ------------------------------------------------------------------------------------
+          var newMarkers = [];
+          {% for result in celulas %}
+            console.log('{{ result.latitud | default:'0' }}');
+
+            // Google map marker content -----------------------------------------------------------------------------------
+
+            var markerContent = document.createElement('DIV');
+            markerContent.innerHTML =
+                '<div class="map-marker">' +
+                '<p class="icon" style="padding-top:5px;">{{ result.get_dias_display | slice:":2" | default:'' }}</p>' +
+                '</div>';
+
+              var marker = new RichMarker({
+                  //position: mapCenter,
+                  position: new google.maps.LatLng('{{ result.latitud | default:'0' }}', '{{ result.longitud | default:'0' }}'),
+                  map: map,
+                  draggable: false,
+                  content: markerContent,
+                  flat: true
+              });
+
+              newMarkers.push(marker);
+          {% endfor %}
+
+
+        // Add a marker clusterer to manage the markers.
+        var markerCluster = new MarkerClusterer(map, newMarkers,
+            {imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+
+          marker.content.className = 'marker-loaded';
+      }
+  </script>
+{% endblock %}

@@ -33,6 +33,11 @@ from django.conf import settings
 # Create your views here.
 def encuesta(request):
     return render(request, 'encuesta.html')
+
+def lideres_map(request):
+    celulas = info_lideres.objects.all()
+    return render(request, 'live_map.html',{'celulas':celulas})
+
 @csrf_exempt
 def index(request):
     mensaje = ''
@@ -70,6 +75,7 @@ def lideres_info(request, id_celula):
     else:
         print("Lider = " + str(celula_save))
         form = InfoForm(instance=celula_save)
+        print(form)
     return render(request,'info_lideres.html',{'celula':celula_save,'lider':lid,'form':form})
 
 @csrf_exempt

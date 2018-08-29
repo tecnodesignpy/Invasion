@@ -90,8 +90,8 @@ class info_lideres(models.Model):
     recibe_gente    = models.CharField(max_length=20, choices=SI_NO, blank=True, null=True)
     dias            = models.CharField(max_length=20, choices=DIAS, blank=True, null=True)
     horario         = models.CharField(max_length=100, blank=True, null=True)
-    latitud         = models.CharField(max_length=200, blank=True, null=True)
-    longitud        = models.CharField(max_length=200, blank=True, null=True)
+    latitud         = models.CharField(max_length=200, blank=True, null=True, default='-25.3034805')
+    longitud        = models.CharField(max_length=200, blank=True, null=True, default='-57.5546023')
     ###
 
 class logrado(models.Model):

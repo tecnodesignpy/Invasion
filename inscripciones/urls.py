@@ -19,4 +19,5 @@ urlpatterns = [
     url(r'^pdf/(?P<id>.*)$', PDF.as_view(), name='pdf'),
     url(r'^pagar/(?P<id>.*)$', views.pagar, name='marcar_pagado'),
     #url(r'^2018/', views.inscripciones),
+    url(r'^lideres-map/$', views.lideres_map, name='map'),
 ]
