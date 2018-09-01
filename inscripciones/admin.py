@@ -63,7 +63,7 @@ class LogradoResource(resources.ModelResource):
         model = logrado
 
 class InfoLiderAdmin(admin.ModelAdmin):
-    list_display = (u'id','lider','recibe_gente','dias','horario',)
+    list_display = (u'id','lider','recibe_gente','dias','horario','latitud','longitud',)
 
 class LogradoAdmin(ExportMixin, admin.ModelAdmin):
     list_display = (u'id','lider','mes','discipulos','linea',)
