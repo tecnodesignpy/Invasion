@@ -71,7 +71,7 @@ def lideres_info(request, id_celula):
         if form.is_valid():
             print(form)
             form.save()
-            return redirect('/lideres/'+lid.ci)
+            return redirect('/')
     else:
         print("Lider = " + str(celula_save))
         form = InfoForm(instance=celula_save)
