@@ -19,10 +19,7 @@
         	</div>
         </div>
         <div class="row">
-            <div class="col-md-6 col-xs-6 text-center" style="border: 1px solid white; padding: 10px; background-color: #A9A1A1;">
-                <p style="font-size: 20px; font-weight: bold; color: black">LOGRADO <br> <span style="font-size: 12px;">HASTA AGOSTO 2018</p>
-            </div>
-            <div class="col-md-6 col-xs-6 text-center" style="border: 1px solid white; padding: 10px; background-color: #A9A1A1;">
+            <div class="col-md-12 col-xs-12 text-center" style="border: 1px solid white; padding: 10px; background-color: #A9A1A1;">
                 <p style="font-size: 20px; font-weight: bold; color: black">LOGRADO <br> <span style="font-size: 12px;">EN SETIEMBRE 2018</span></p>
             </div>
         </div>
@@ -35,11 +32,7 @@
 		</div>
 	</div>
 	<div class="row" style="background-color: #719988; padding: 10px">
-		<div class="col-xs-6 text-center">
-			<p style="color:black;">Cantidad</p>
-			<p style="font-size: 20px;">{{ logrado_mes_anterior.discipulos | default:'0' }}</p>
-		</div>
-		<div class="col-xs-6 text-center">
+		<div class="col-xs-12 text-center">
 			<p style="color:black;">Cantidad </p>
 			<input required type="number" name="ldiscipulos" value="{{ logrado.discipulos }}">
 		</div>
@@ -57,11 +50,7 @@
 		</div>
 	</div>
 	<div class="row" style="background-color: #F8D169; padding: 0px 10px 10px">
-		<div class="col-xs-6 text-center">
-			<p>Cantidad por fé</p>
-			<p style="font-size: 20px;">{{ logrado_mes_anterior.ganar | default:'0' }}</p>
-		</div>
-		<div class="col-xs-6 text-center">
+		<div class="col-xs-12 text-center">
 			<p>Cantidad lograda</p>
 			<input required type="number" name="lganar" value="{{ logrado.ganar }}">
 		</div>
@@ -80,11 +69,7 @@
 		</div>
 	</div>
 	<div class="row" style="background-color: #E98167; padding: 0px 10px 10px">
-		<div class="col-xs-6 text-center">
-			<p>Cantidad</p>
-			<p style="font-size: 20px;">{{ logrado_mes_anterior.consolidar_agua | default:'0' }}</p>
-		</div>
-		<div class="col-xs-6 text-center">
+		<div class="col-xs-12 text-center">
 			<p>Cantidad</p>
 			<input required type="number" name="lconsolidar_agua" value="{{ logrado.consolidar_agua }}">
 		</div>
@@ -96,11 +81,7 @@
 		</div>
 	</div>
 	<div class="row" style="background-color: #E98167; padding: 0px 10px 10px">
-		<div class="col-xs-6 text-center">
-			<p>Cantidad</p>
-			<p style="font-size: 20px;">{{ logrado_mes_anterior.consolidar_espiritu | default:'0' }}</p>
-		</div>
-		<div class="col-xs-6 text-center">
+		<div class="col-xs-12 text-center">
 			<p>Cantidad</p>
 			<input required type="number" name="lconsolidar_espiritu" value="{{ logrado.consolidar_espiritu }}">
 		</div>
@@ -112,11 +93,7 @@
 		</div>
 	</div>
 	<div class="row" style="background-color: #E98167; padding: 0px 10px 10px">
-		<div class="col-xs-6 text-center">
-			<p>Cantidad</p>
-			<p style="font-size: 20px;">{{ logrado_mes_anterior.consolidar_seminario | default:'0' }}</p>
-		</div>
-		<div class="col-xs-6 text-center">
+		<div class="col-xs-12 text-center">
 			<p>Cantidad</p>
 			<input required type="number" name="lconsolidar_seminario"  value="{{ logrado.consolidar_seminario }}">
 		</div>
@@ -135,11 +112,7 @@
 		</div>
 	</div>
 	<div class="row" style="background-color: #93A750; padding: 0px 10px 10px">
-		<div class="col-xs-6 text-center">
-			<p>Cantidad</p>
-			<p style="font-size: 20px;">{{ logrado_mes_anterior.discipular_caminando | default:'0' }}</p>
-		</div>
-		<div class="col-xs-6 text-center">
+		<div class="col-xs-12 text-center">
 			<p>Cantidad</p>
 			<input required type="number" name="ldiscipular_caminando"  value="{{ logrado.discipular_caminando }}">
 		</div>
@@ -151,11 +124,7 @@
 		</div>
 	</div>
 	<div class="row" style="background-color: #93A750; padding: 0px 10px 10px">
-		<div class="col-xs-6 text-center">
-			<p>Cantidad</p>
-			<p style="font-size: 20px;">{{ logrado_mes_anterior.discipular_escuela | default:'0' }}</p>
-		</div>
-		<div class="col-xs-6 text-center">
+		<div class="col-xs-12 text-center">
 			<p>Cantidad</p>
 			<input required type="number" name="ldiscipular_escuela" value="{{ logrado.discipular_escuela }}">
 		</div>
@@ -167,11 +136,7 @@
 		</div>
 	</div>
 	<div class="row" style="background-color: #93A750; padding: 0px 10px 10px">
-		<div class="col-xs-6 text-center">
-			<p>Cantidad</p>
-			<p style="font-size: 20px;">{{ logrado_mes_anterior.discipular_imparticion | default:'0' }}</p>
-		</div>
-		<div class="col-xs-6 text-center">
+		<div class="col-xs-12 text-center">
 			<p>Cantidad</p>
 			<input required type="number" name="ldiscipular_imparticion"  value="{{ logrado.discipular_imparticion }}">
 		</div>
@@ -183,11 +148,7 @@
 		</div>
 	</div>
 	<div class="row" style="background-color: #93A750; padding: 0px 10px 10px">
-		<div class="col-xs-6 text-center">
-			<p>Cantidad</p>
-			<p style="font-size: 20px;">{{ logrado_mes_anterior.discipular_vocacional | default:'0' }}</p>
-		</div>
-		<div class="col-xs-6 text-center">
+		<div class="col-xs-12 text-center">
 			<p>Cantidad</p>
 			<input required type="number" name="ldiscipular_vocacional"  value="{{ logrado.discipular_vocacional }}">
 		</div>
@@ -206,11 +167,7 @@
 		</div>
 	</div>
 	<div class="row" style="background-color: #5A4878; padding: 0px 10px 10px">
-		<div class="col-xs-6 text-center">
-			<p style="color: white">Cantidad</p>
-			<p style="font-size: 20px;color: white">{{ logrado_mes_anterior.multiplicar | default:'0' }}</p>
-		</div>
-		<div class="col-xs-6 text-center">
+		<div class="col-xs-12 text-center">
 			<p style="color: white">Cantidad</p>
 			<input type="number" name="lmultiplicar" required="true"  value="{{ logrado.multiplicar }}">
 		</div>

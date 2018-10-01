@@ -114,7 +114,7 @@ def lideres_form(request, cedula, id_celula):
             discipular_vocacional   = request.POST.get("ldiscipular_vocacional")
             multiplicar             = request.POST.get("lmultiplicar")
             print("DISCIPULOS "+str(discipulos))
-            logrado.objects.create(lider=lider, mes=9, discipulos=discipulos, ganar=ganar, consolidar_agua=consolidar_agua,
+            logrado.objects.create(lider=lider, mes=10, discipulos=discipulos, ganar=ganar, consolidar_agua=consolidar_agua,
                                     consolidar_espiritu=consolidar_espiritu, consolidar_seminario=consolidar_seminario,
                                     discipular_caminando=discipular_caminando, discipular_escuela=discipular_escuela,
                                     discipular_imparticion=discipular_imparticion, discipular_vocacional=discipular_vocacional,
