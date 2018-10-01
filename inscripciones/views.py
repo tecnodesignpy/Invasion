@@ -19,6 +19,7 @@ from reportlab.lib import colors
 from django.http import HttpResponse
 import random
 from random import shuffle
+from django.db.models import Func, Sum, Count
 
 #import locale 
 # Definimos el formato que deseamos
@@ -44,7 +45,7 @@ def index(request):
     if request.method == "POST":
         cedula = request.POST.get("cedula")
         try:
-            lider = lideres.objects.filter(ci=cedula)
+            lider = lideres.objects.filter(ci=cedula).count()
         except:
             lider = 0
         if(lider != 0):
@@ -78,11 +79,19 @@ def lideres_info(request, id_celula):
         print(form)
     return render(request,'info_lideres.html',{'celula':celula_save,'lider':lid,'form':form})
 
+def resultados(request):
+    result = logrado.objects.filter(mes=9).aggregate(discipulos=Sum('discipulos'),ganar=Sum('ganar'),consolidar_agua=Sum('consolidar_agua'),
+                                                    consolidar_espiritu=Sum('consolidar_espiritu'),consolidar_seminario=Sum('consolidar_seminario'),discipular_caminando=Sum('discipular_caminando'),
+                                                    discipular_escuela=Sum('discipular_escuela'),discipular_imparticion=Sum('discipular_imparticion'),discipular_vocacional=Sum('discipular_vocacional'),
+                                                    multiplicar=Sum('multiplicar'))
+    print(result)
+    return render(request, 'resultados.html', {'resultados':result})
+
 @csrf_exempt
 def lideres_form(request, cedula, id_celula):
         lider   = lideres.objects.get(id=id_celula, ci=cedula)
         try:
-            logrado_mes_anterior = logrado.objects.get(lider=lider, mes=8)
+            logrado_mes_anterior = logrado.objects.get(lider=lider, mes=9)
         except:
             logrado_mes_anterior = None
         today   = datetime.today()
@@ -90,7 +99,7 @@ def lideres_form(request, cedula, id_celula):
         dia     = today.day
         # Si ya paso el 20 de cada mes, debe traer los datos del mes siguiente y mes anterior.
         try:
-            logro = logrado.objects.get(lider=lider, mes=9)
+            logro = logrado.objects.get(lider=lider, mes=10)
         except:
             logro = None
         if request.method == "POST":

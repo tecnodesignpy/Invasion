@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block extraheaders %}
+	<style type="text/css">
+		body, html {
+		  height: 100% !important;
+		}
+		.content{
+			height: 100%;
+		}
+	</style>
+{% endblock %}
+
+{% block content %}
+	<center>
+		<h2>Resultados del mes de Setiembre</h2>
+		<table style="border: 1px solid black; margin-top:40px; width: 100%;">
+		  <tr style="border: 1px solid gray">
+		    <td style="border: 1px solid gray">Discípulos en Célula</td>
+		    <td style="border: 1px solid gray; width: 20%; text-align: center;">{{ resultados.discipulos }}</td>
+		  </tr>
+		  <tr style="border: 1px solid gray">
+		    <td style="border: 1px solid gray">Ganar</td>
+		    <td style="border: 1px solid gray; width: 20%; text-align: center;">{{ resultados.ganar }}</td>
+		  </tr>
+		  <tr style="border: 1px solid gray">
+		    <td style="border: 1px solid gray">Consolidar (Bautismo en Agua)</td>
+		    <td style="border: 1px solid gray; width: 20%; text-align: center;">{{ resultados.consolidar_agua }}</td>
+		  </tr>
+		  <tr style="border: 1px solid gray">
+		    <td style="border: 1px solid gray">Consolidar (Bautismo en el Espíritu Santo)</td>
+		    <td style="border: 1px solid gray; width: 20%; text-align: center;">{{ resultados.consolidar_espiritu }}</td>
+		  </tr>
+		  <tr style="border: 1px solid gray">
+		    <td style="border: 1px solid gray">Consolidar (Seminario de Sanidad)</td>
+		    <td style="border: 1px solid gray; width: 20%; text-align: center;">{{ resultados.consolidar_seminario }}</td>
+		  </tr>
+		  <tr style="border: 1px solid gray">
+		    <td style="border: 1px solid gray">Discipular (Escuela caminando con Dios)</td>
+		    <td style="border: 1px solid gray; width: 20%; text-align: center;">{{ resultados.discipular_caminando }}</td>
+		  </tr>
+		  <tr style="border: 1px solid gray">
+		    <td style="border: 1px solid gray">Discipular (Escuela de Líderes)</td>
+		    <td style="border: 1px solid gray; width: 20%; text-align: center;">{{ resultados.discipular_escuela }}</td>
+		  </tr>
+		  <tr style="border: 1px solid gray">
+		    <td style="border: 1px solid gray">Discipular (Seminario de Impartición)</td>
+		    <td style="border: 1px solid gray; width: 20%; text-align: center;">{{ resultados.discipular_imparticion }}</td>
+		  </tr>
+		  <tr style="border: 1px solid gray">
+		    <td style="border: 1px solid gray">Discipular (Escuela Vocacional)</td>
+		    <td style="border: 1px solid gray; width: 20%; text-align: center;">{{ resultados.discipular_vocacional }}</td>
+		  </tr>
+		  <tr style="border: 1px solid gray">
+		    <td style="border: 1px solid gray">Multiplicar (Células Nuevas)</td>
+		    <td style="border: 1px solid gray; width: 20%; text-align: center;">{{ resultados.multiplicar }}</td>
+		  </tr>
+		</table>
+	</center>
+{% endblock %}
+
+{% block extrascripts %}
+{% endblock %}
