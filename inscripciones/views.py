@@ -80,7 +80,10 @@ def lideres_info(request, id_celula):
     return render(request,'info_lideres.html',{'celula':celula_save,'lider':lid,'form':form})
 
 def resultados(request):
-    result = logrado.objects.filter(mes=9).aggregate(discipulos=Sum('discipulos'))
+    result = logrado.objects.filter(mes=10).aggregate(discipulos=Sum('discipulos'),ganar=Sum('ganar'),consolidar_agua=Sum('consolidar_agua'),
+                                                    consolidar_espiritu=Sum('consolidar_espiritu'),consolidar_seminario=Sum('consolidar_seminario'),discipular_caminando=Sum('discipular_caminando'),
+                                                    discipular_escuela=Sum('discipular_escuela'),discipular_imparticion=Sum('discipular_imparticion'),discipular_vocacional=Sum('discipular_vocacional'),
+                                                    multiplicar=Sum('multiplicar'),)
     print(result)
     return render(request, 'resultados.html', {'resultados':result})
 
