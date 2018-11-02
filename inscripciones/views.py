@@ -88,7 +88,7 @@ def resultados(request):
 def lideres_form(request, cedula, id_celula):
         lider   = lideres.objects.get(id=id_celula, ci=cedula)
         try:
-            logrado_mes_anterior = logrado.objects.get(lider=lider, mes=9)
+            logrado_mes_anterior = logrado.objects.get(lider=lider, mes=10)
         except:
             logrado_mes_anterior = None
         today   = datetime.today()
@@ -96,7 +96,7 @@ def lideres_form(request, cedula, id_celula):
         dia     = today.day
         # Si ya paso el 20 de cada mes, debe traer los datos del mes siguiente y mes anterior.
         try:
-            logro = logrado.objects.get(lider=lider, mes=10)
+            logro = logrado.objects.get(lider=lider, mes=11)
         except:
             logro = None
         if request.method == "POST":
@@ -111,7 +111,7 @@ def lideres_form(request, cedula, id_celula):
             discipular_vocacional   = request.POST.get("ldiscipular_vocacional")
             multiplicar             = request.POST.get("lmultiplicar")
             print("DISCIPULOS "+str(discipulos))
-            logrado.objects.create(lider=lider, mes=10, discipulos=discipulos, ganar=ganar, consolidar_agua=consolidar_agua,
+            logrado.objects.create(lider=lider, mes=11, discipulos=discipulos, ganar=ganar, consolidar_agua=consolidar_agua,
                                     consolidar_espiritu=consolidar_espiritu, consolidar_seminario=consolidar_seminario,
                                     discipular_caminando=discipular_caminando, discipular_escuela=discipular_escuela,
                                     discipular_imparticion=discipular_imparticion, discipular_vocacional=discipular_vocacional,
